@@ -4,9 +4,9 @@ import { Calendar, Phone } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-gray-700 text-sm sm:text-base md:text-lg font-medium mb-2 sm:mb-3 tracking-[0.2em] sm:tracking-[0.3em] uppercase">
             VELKOMMEN TIL
@@ -19,8 +19,7 @@ export default function Home() {
             Din tannlege ved Nationaltheatret
           </h3>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
-            Vi tilbyr moderne og skånsom tannbehandling i trygge omgivelser
-            <br className="hidden sm:block" />
+            Vi tilbyr moderne og skånsom tannbehandling i trygge omgivelser<br />
             – for hele familien.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-lg mx-auto">
