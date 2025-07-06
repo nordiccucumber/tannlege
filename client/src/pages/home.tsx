@@ -61,28 +61,26 @@ export default function Home() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOutSection delay={0.2} translateY={30}>
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                  Moderne og lyse lokaler
-                </h2>
-                <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  Klinikken holder til i 8. etasje i Stortingsgata 30, med vakre lokaler 
-                  og utsikt over Oslo sentrum. Her møter du vårt erfarne team i trygge 
-                  og komfortable omgivelser.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Vi har investert i moderne utstyr og teknologi for å gi deg den beste 
-                  tannbehandlingen, samtidig som vi setter pasientens komfort i høysetet.
-                </p>
-              </div>
-              <div className="relative">
-                <img 
-                  src="/attached_assets/image_1751838218963.png" 
-                  alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler" 
-                  className="rounded-2xl shadow-lg w-full h-auto object-cover"
-                />
-              </div>
+            <div className="mb-16">
+              <img 
+                src="attached_assets/image_1751838218963.png" 
+                alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler" 
+                className="rounded-2xl shadow-lg w-full h-auto object-cover"
+              />
+            </div>
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                Moderne og lyse lokaler
+              </h2>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Klinikken holder til i 8. etasje i Stortingsgata 30, med vakre lokaler 
+                og utsikt over Oslo sentrum. Her møter du vårt erfarne team i trygge 
+                og komfortable omgivelser.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Vi har investert i moderne utstyr og teknologi for å gi deg den beste 
+                tannbehandlingen, samtidig som vi setter pasientens komfort i høysetet.
+              </p>
             </div>
           </FadeInOutSection>
         </div>
