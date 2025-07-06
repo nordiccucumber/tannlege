@@ -12,10 +12,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Velkommen til <span className="text-brand-pink">Tannlege Slåttebrekk</span> – din tannlege i Oslo
+                Velkommen til <span className="text-brand-pink">Tannlege Slåttebrekk</span> – Din tannlege ved Nationaltheatret
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Profesjonell tannlegebehandling i hjertet av Oslo. Vi tilbyr moderne behandlinger med fokus på din komfort og trygghet.
+                Vi tilbyr moderne og skånsom tannbehandling
+                i trygge omgivelser – for hele familien.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/bestill-time">
