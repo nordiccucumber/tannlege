@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -16,12 +16,6 @@ export default function Footer() {
               <a href="https://www.facebook.com/TannlegeSlattebrekk" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Linkedin size={20} />
-              </a>
             </div>
           </div>
           
@@ -29,8 +23,8 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Hurtiglenker</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Forside
+                <Link href="/tjenester" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Tjenester
                 </Link>
               </li>
               <li>
@@ -39,18 +33,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/tjenester" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Tjenester
-                </Link>
-              </li>
-              <li>
-                <Link href="/bestill-time" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Bestill time
+                <Link href="/pasientinformasjon" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Pasientinfo
                 </Link>
               </li>
               <li>
                 <Link href="/kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Kontakt
+                </Link>
+              </li>
+              <li>
+                <Link href="/bestill-time" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Bestill time
                 </Link>
               </li>
             </ul>
