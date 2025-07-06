@@ -62,13 +62,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOutSection delay={0.2} translateY={30}>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <img 
-                  src="attached_assets/image_1751838218963.png" 
-                  alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler" 
-                  className="rounded-2xl shadow-lg w-full h-auto object-cover"
-                />
-              </div>
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Moderne og lyse lokaler
@@ -82,6 +75,13 @@ export default function Home() {
                   Vi har investert i moderne utstyr og teknologi for å gi deg den beste 
                   tannbehandlingen, samtidig som vi setter pasientens komfort i høysetet.
                 </p>
+              </div>
+              <div className="relative">
+                <img 
+                  src="/attached_assets/image_1751838218963.png" 
+                  alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler" 
+                  className="rounded-2xl shadow-lg w-full h-auto object-cover"
+                />
               </div>
             </div>
           </FadeInOutSection>
