@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Activity, Settings, Gem, Shield, Info } from "lucide-react";
+import { FadeInOutSection } from "@/components/FadeInOutSection";
 
 export default function Services() {
   const services = [

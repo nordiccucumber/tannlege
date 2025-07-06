@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Info, Heart, AlertTriangle, Shield, CalendarX, Check } from "lucide-react";
+import { FadeInOutSection } from "@/components/FadeInOutSection";
 
 export default function PatientInfo() {
   return (

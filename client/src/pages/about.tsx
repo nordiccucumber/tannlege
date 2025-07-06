@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import doctorImage from "@assets/image_1751814806978.png";
 import assistantImage from "@assets/image_1751823084330.png";
+import { FadeInOutSection } from "@/components/FadeInOutSection";
 
 export default function About() {
   return (
