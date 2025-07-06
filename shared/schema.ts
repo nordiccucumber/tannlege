@@ -24,9 +24,9 @@ export const appointments = pgTable("appointments", {
 export const contactMessages = pgTable("contact_messages", {
   id: serial("id").primaryKey(),
   firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
+  lastName: text("last_name"),
   email: text("email").notNull(),
-  phone: text("phone").notNull(),
+  phone: text("phone"),
   message: text("message").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
