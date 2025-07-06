@@ -84,7 +84,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-10 h-10 bg-[#F5FAF6] rounded-full flex items-center justify-center mr-4">
                     <Phone className="text-[#6B8E23]" size={20} />
                   </div>
                   <div>

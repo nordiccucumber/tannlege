@@ -1,53 +1,91 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Calendar, Phone, Activity, Settings, Gem, Shield, Star, User, Check } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const heroImageRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    if (heroImageRef.current) observer.observe(heroImageRef.current);
+    if (servicesRef.current) observer.observe(servicesRef.current);
+    if (testimonialsRef.current) observer.observe(testimonialsRef.current);
+    if (aboutRef.current) observer.observe(aboutRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-pink-light via-[#C3E26E]/30 to-brand-green-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Velkommen til <span className="text-brand-pink">Tannlege Slåttebrekk</span> – Din tannlege ved Nationaltheatret
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Vi tilbyr moderne og skånsom tannbehandling
-                i trygge omgivelser – for hele familien.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/bestill-time">
-                  <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 text-lg px-8 py-4">
-                    <Calendar className="mr-2" size={20} />
-                    Bestill time
-                  </Button>
-                </Link>
-                <Button 
-                  variant="outline" 
-                  className="border-brand-pink text-brand-pink hover:bg-brand-pink-light text-lg px-8 py-4"
-                  onClick={() => window.open('tel:22834173')}
-                >
-                  <Phone className="mr-2" size={20} />
-                  Ring oss
-                </Button>
-              </div>
-            </div>
-            <div className="relative">
-              <img 
-                src="/attached_assets/image_1751824287638.png" 
-                alt="Moderne tannlegepraksis med lyse og innbydende lokaler" 
-                className="rounded-2xl shadow-2xl w-full" 
-              />
-            </div>
+      {/* Hero Section - Full screen initially */}
+      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-50 to-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-gray-800 text-lg sm:text-xl lg:text-2xl font-medium mb-6 tracking-wide">
+            VELKOMMEN TIL
+          </h1>
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-brand-pink mb-8 leading-tight">
+            Tannlege<br />
+            Slåttebrekk
+          </h2>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl text-gray-800 font-medium mb-8">
+            Din tannlege ved Nationaltheatret
+          </h3>
+          <p className="text-lg sm:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Vi tilbyr moderne og skånsom tannbehandling i trygge omgivelser – for hele familien.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/bestill-time">
+              <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 text-lg px-8 py-4 rounded-full">
+                <Calendar className="mr-2" size={20} />
+                Bestill time
+              </Button>
+            </Link>
+            <Button 
+              variant="outline" 
+              className="border-brand-pink text-brand-pink hover:bg-brand-pink-light text-lg px-8 py-4 rounded-full"
+              onClick={() => window.open('tel:22834173')}
+            >
+              <Phone className="mr-2" size={20} />
+              Ring oss
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Image Section - Appears on scroll */}
+      <section ref={heroImageRef} className="py-16 bg-white opacity-0 translate-y-8 transition-all duration-1000">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative">
+            <img 
+              src="/attached_assets/image_1751824287638.png" 
+              alt="Moderne tannlegepraksis med lyse og innbydende lokaler" 
+              className="rounded-2xl shadow-2xl w-full max-w-4xl mx-auto" 
+            />
           </div>
         </div>
       </section>
 
       {/* Services Overview */}
-      <section className="py-16 bg-[#C3E26E]/20">
+      <section ref={servicesRef} className="py-16 bg-[#F5FAF6] opacity-0 translate-y-8 transition-all duration-1000">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Våre tjenester</h2>
@@ -55,7 +93,7 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
+            <Card className="border border-gray-100 hover:shadow-md transition-all duration-300 bg-white transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mb-4">
                   <Activity className="text-[#6B8E23]" size={32} />
@@ -65,7 +103,7 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
+            <Card className="border border-gray-100 hover:shadow-md transition-all duration-300 bg-white transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
                   <Settings className="text-brand-pink" size={32} />
@@ -75,7 +113,7 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
+            <Card className="border border-gray-100 hover:shadow-md transition-all duration-300 bg-white transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mb-4">
                   <Gem className="text-[#6B8E23]" size={32} />
@@ -85,7 +123,7 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
+            <Card className="border border-gray-100 hover:shadow-md transition-all duration-300 bg-white transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
                   <Shield className="text-brand-pink" size={32} />
@@ -99,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-gray-50">
+      <section ref={testimonialsRef} className="py-16 bg-gray-50 opacity-0 translate-y-8 transition-all duration-1000">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Hva pasientene sier</h2>
@@ -107,7 +145,7 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card>
+            <Card className="hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="flex text-yellow-400">
@@ -131,7 +169,7 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="flex text-yellow-400">
@@ -144,7 +182,7 @@ export default function Home() {
                   "Jeg fikk implantat hos Dr. Slåttebrekk og hele prosessen var profesjonell og smertefri. Resultatet er perfekt!"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-brand-green-light rounded-full flex items-center justify-center mr-3">
+                  <div className="w-10 h-10 bg-[#F5FAF6] rounded-full flex items-center justify-center mr-3">
                     <User className="text-brand-green" size={20} />
                   </div>
                   <div>
@@ -155,7 +193,7 @@ export default function Home() {
               </CardContent>
             </Card>
             
-            <Card>
+            <Card className="hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="flex text-yellow-400">
@@ -183,7 +221,7 @@ export default function Home() {
       </section>
 
       {/* About Preview */}
-      <section className="py-16 bg-white">
+      <section ref={aboutRef} className="py-16 bg-white opacity-0 translate-y-8 transition-all duration-1000">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Kort om klinikken</h2>
@@ -199,7 +237,7 @@ export default function Home() {
                 Hun har spesialkompetanse i implantatprotetikk og kan utføre implantat-behandling 
                 med trygderefusjon i samarbeid med oralkirurg.
               </p>
-              <div className="bg-[#C3E26E]/30 rounded-xl p-6">
+              <div className="bg-[#F5FAF6] rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Spesialområder</h4>
                 <ul className="space-y-2">
                   <li className="flex items-center text-gray-600">

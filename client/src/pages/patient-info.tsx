@@ -9,7 +9,7 @@ export default function PatientInfo() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Pasientinformasjon</h1>
           <p className="text-xl text-gray-600">Viktig informasjon for din behandling</p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             {/* Before Your Visit */}
@@ -39,7 +39,7 @@ export default function PatientInfo() {
                 </ul>
               </CardContent>
             </Card>
-            
+
             {/* After Treatment */}
             <Card className="bg-white shadow-sm">
               <CardContent className="p-6">
@@ -68,7 +68,7 @@ export default function PatientInfo() {
               </CardContent>
             </Card>
           </div>
-          
+
           <div className="space-y-8">
             {/* Emergency Info */}
             <Card className="bg-red-50 border-red-200">
@@ -87,7 +87,7 @@ export default function PatientInfo() {
                 </div>
               </CardContent>
             </Card>
-            
+
             {/* Insurance Info */}
             <Card className="bg-white shadow-sm">
               <CardContent className="p-6">
@@ -114,7 +114,7 @@ export default function PatientInfo() {
                 </div>
               </CardContent>
             </Card>
-            
+
             {/* Cancellation Policy */}
             <Card className="bg-white shadow-sm">
               <CardContent className="p-6">
@@ -134,7 +134,7 @@ export default function PatientInfo() {
         {/* Additional Information */}
         <div className="mt-16 bg-white rounded-2xl p-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Viktige retningslinjer</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Hygiene og sikkerhet</h3>
@@ -157,7 +157,7 @@ export default function PatientInfo() {
                 </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Betaling og forsikring</h3>
               <ul className="space-y-3 text-gray-600">

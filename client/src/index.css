@@ -114,4 +114,9 @@
   .hover\:bg-brand-green:hover {
     background-color: hsl(82, 55%, 65%);
   }
+
+  .animate-fade-in-up {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }

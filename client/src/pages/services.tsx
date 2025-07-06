@@ -55,7 +55,7 @@ export default function Services() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Tjenester og priser</h1>
           <p className="text-xl text-gray-600">Komplett oversikt over våre behandlinger</p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="bg-white shadow-sm">
@@ -78,7 +78,7 @@ export default function Services() {
             </Card>
           ))}
         </div>
-        
+
         <div className="mt-12 space-y-6">
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-blue-50 border-blue-200">
@@ -87,7 +87,7 @@ export default function Services() {
                 <p className="text-blue-800 text-sm">* Tilbudet gjelder fulltidsstudenter med betalt semesteravgift. På behandlinger utover dette gir vi -50% rabatt.</p>
               </CardContent>
             </Card>
-            <Card className="bg-green-50 border-green-200">
+            <Card className="bg-[#F5FAF6] border-green-200">
               <CardContent className="p-6 text-center">
                 <h3 className="text-lg font-semibold text-green-900 mb-2">TANNLEGESKREKK?</h3>
                 <p className="text-green-800 text-sm">Vi har god og lang erfaring med pasienter som er engstelige for å gå til tannlegen.</p>
@@ -114,9 +114,9 @@ export default function Services() {
         </div>
 
         {/* Detailed Service Information */}
-        <div className="mt-16 bg-white rounded-2xl p-8">
+        <div className="mt-16 bg-[#F5FAF6] rounded-2xl p-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Detaljert behandlingsinformasjon</h2>
-          
+
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Implantatbehandling</h3>
@@ -133,7 +133,7 @@ export default function Services() {
                 <li>Regelmessig oppfølging og kontroll</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Generell tannpleie</h3>
               <p className="text-gray-600 mb-4">
@@ -148,7 +148,7 @@ export default function Services() {
                 <li>Tidlig oppdagelse av tannproblemer</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Kosmetisk tannpleie</h3>
               <p className="text-gray-600 mb-4">

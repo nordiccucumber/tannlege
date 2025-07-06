@@ -11,7 +11,7 @@ export default function About() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Om oss</h1>
           <p className="text-xl text-gray-600">Møt vårt erfarne team</p>
         </div>
-        
+
         {/* Dr. Mai Solgunn Glasø Slåttebrekk */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
@@ -31,8 +31,8 @@ export default function About() {
             <p className="text-gray-600 mb-6 leading-relaxed">
               Tannlege Slåttebrekk har spesialkompetanse i implantatprotetikk, og kan utføre implantat-behandling med trygderefusjon i samarbeid med oralkirurg.
             </p>
-            
-            <Card className="bg-[#C3E26E]/30 border-[#C3E26E]/40">
+
+            <Card className="bg-[#F5FAF6] border-brand-green/20">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Spesialområder</h3>
                 <ul className="space-y-2">
@@ -57,7 +57,7 @@ export default function About() {
             </Card>
           </div>
         </div>
-        
+
         {/* Malin Pousette */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="lg:order-2">
@@ -78,8 +78,8 @@ export default function About() {
               Med sin varme og profesjonelle tilnærming hjelper Malin pasientene med timebestilling, 
               behandlingsinformasjon og praktiske spørsmål.
             </p>
-            
-            <Card className="bg-brand-pink-light border-brand-pink/20">
+
+            <Card className="bg-[#F5FAF6] border-brand-pink/20">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Ansvar</h3>
                 <ul className="space-y-2">
@@ -104,14 +104,14 @@ export default function About() {
             </Card>
           </div>
         </div>
-        
+
         {/* Clinic Information */}
         <div className="mt-20 bg-[#C3E26E]/20 rounded-2xl p-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Våre lokaler</h2>
             <p className="text-lg text-gray-600">Moderne og komfortable omgivelser</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <img 
