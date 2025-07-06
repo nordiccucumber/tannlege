@@ -16,7 +16,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
             <img 
-              src={doctorImage} 
+              src="/attached_assets/image_1751814806978.png" 
               alt="Dr. Mai Solgunn Glasø Slåttebrekk, erfaren tannlege" 
               className="rounded-2xl shadow-lg w-full" 
             />
@@ -32,24 +32,24 @@ export default function About() {
               Tannlege Slåttebrekk har spesialkompetanse i implantatprotetikk, og kan utføre implantat-behandling med trygderefusjon i samarbeid med oralkirurg.
             </p>
             
-            <Card className="bg-brand-green-light border-brand-green/20">
+            <Card className="bg-[#C3E26E]/30 border-[#C3E26E]/40">
               <CardContent className="p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Spesialområder</h3>
                 <ul className="space-y-2">
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Implantatprotetikk
                   </li>
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Generell tannpleie
                   </li>
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Kosmetisk tannpleie
                   </li>
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Forebyggende behandling
                   </li>
                 </ul>
@@ -62,7 +62,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="lg:order-2">
             <img 
-              src={assistantImage} 
+              src="/attached_assets/image_1751823084330.png" 
               alt="Malin Pousette, erfaren tannhelsesekretær" 
               className="rounded-2xl shadow-lg w-full" 
             />
@@ -106,7 +106,7 @@ export default function About() {
         </div>
         
         {/* Clinic Information */}
-        <div className="mt-20 bg-gray-50 rounded-2xl p-8">
+        <div className="mt-20 bg-[#C3E26E]/20 rounded-2xl p-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Våre lokaler</h2>
             <p className="text-lg text-gray-600">Moderne og komfortable omgivelser</p>
@@ -123,7 +123,7 @@ export default function About() {
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Fine og lyse lokaler</h3>
               <p className="text-gray-600 mb-4 leading-relaxed">
-                Vi holder til i fine og lyse lokaler direkte over gaten for Nationaltheateret stasjon i Stortingsgata 30, 8. etasje.
+                Vi holder til i fine og lyse lokaler i Stortingsgata 30, 8. etasje i Oslo sentrum.
               </p>
               <p className="text-gray-600 mb-4 leading-relaxed">
                 Klinikken er utstyrt med moderne teknologi og designet for å gi pasientene en komfortabel og trygg opplevelse.

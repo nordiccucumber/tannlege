@@ -38,8 +38,8 @@ export default function Contact() {
     },
     onSuccess: () => {
       toast({
-        title: "Melding sendt!",
-        description: "Takk for din henvendelse. Vi kontakter deg så snart som mulig.",
+        title: "Takk for henvendelsen!",
+        description: "Vi svarer deg så snart vi kan.",
       });
       form.reset();
     },
@@ -79,17 +79,17 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Adresse</p>
-                    <p className="text-gray-600">Majorstuveien 36, 0367 Oslo</p>
-                    <p className="text-sm text-gray-500">8. etasje, over Nationaltheateret stasjon</p>
+                    <p className="text-gray-600">Stortingsgata 30, 0161 Oslo</p>
+                    <p className="text-sm text-gray-500">8. etasje</p>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-brand-green-light rounded-full flex items-center justify-center mr-4">
-                    <Phone className="text-brand-green" size={20} />
+                  <div className="w-10 h-10 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mr-4">
+                    <Phone className="text-[#6B8E23]" size={20} />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Telefon</p>
-                    <p className="text-gray-600">22 46 80 86</p>
+                    <p className="text-gray-600">22 83 41 73</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -98,13 +98,13 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">E-post</p>
-                    <p className="text-gray-600">post@tannlegeslaattebrekk.no</p>
+                    <p className="text-gray-600">tannlegeslattebrekk@gmail.com</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
-            <Card className="bg-brand-green-light">
+            <Card className="bg-[#C3E26E]/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Åpningstider</CardTitle>
               </CardHeader>
@@ -139,10 +139,15 @@ export default function Contact() {
           
           <div>
             <div className="bg-gray-200 rounded-xl h-96 mb-8 overflow-hidden">
-              <img 
-                src={osloImageVenice} 
-                alt="Oslo sentrum med Nationaltheateret og omgivelser" 
-                className="w-full h-full object-cover" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.6!2d10.740!3d59.913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f267f039%3A0x7e92605fd3231e9a!2sStortingsgata%2030%2C%200161%20Oslo!5e0!3m2!1sen!2sno!4v1620000000000!5m2!1sen!2sno"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Tannlege Slåttebrekk lokasjon"
               />
             </div>
             
@@ -185,43 +190,42 @@ export default function Contact() {
 
         {/* Contact Form */}
         <div className="mt-16">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Send oss en melding</CardTitle>
+          <Card className="bg-[#C3E26E]/10">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">Kontakt oss</CardTitle>
+              <p className="text-gray-600 mt-2">Vi tar imot nye pasienter og ser frem til å møte deg!</p>
             </CardHeader>
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Fornavn</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Ditt fornavn" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Etternavn</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Ditt etternavn" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Navn *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ditt navn" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   
                   <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>E-post *</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="Din e-postadresse" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                     <FormField
                       control={form.control}
                       name="phone"
@@ -235,20 +239,21 @@ export default function Contact() {
                         </FormItem>
                       )}
                     />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>E-post</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="Din e-postadresse" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
                   </div>
+
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Ønsket dato / tidspunkt</FormLabel>
+                        <FormControl>
+                          <Input placeholder="F.eks. onsdag 15. januar kl 14:00" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
                   
                   <FormField
                     control={form.control}

@@ -12,11 +12,9 @@ export default function Navigation() {
   };
 
   const navItems = [
-    { href: "/", label: "Forside" },
-    { href: "/om-oss", label: "Om oss" },
     { href: "/tjenester", label: "Tjenester" },
-    { href: "/bestill-time", label: "Bestill time" },
-    { href: "/pasientinformasjon", label: "Pasientinformasjon" },
+    { href: "/om-oss", label: "Om oss" },
+    { href: "/pasientinformasjon", label: "Pasientinfo" },
     { href: "/kontakt", label: "Kontakt" },
   ];
 
@@ -35,7 +33,7 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -47,17 +45,21 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-          </div>
-          
-          {/* Contact Info */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center text-sm text-gray-600">
-              <Phone className="text-brand-pink mr-2" size={16} />
-              <span>22 46 80 86</span>
+            <div className="flex items-center space-x-3 ml-8">
+              <Link href="/bestill-time">
+                <Button className="bg-brand-pink text-white hover:bg-brand-pink/90">
+                  Bestill time
+                </Button>
+              </Link>
+              <Button 
+                variant="outline" 
+                size="icon"
+                className="border-brand-pink text-brand-pink hover:bg-brand-pink-light"
+                onClick={() => window.open('tel:22834173')}
+              >
+                <Phone size={18} />
+              </Button>
             </div>
-            <Button className="bg-brand-pink text-white hover:bg-brand-pink/90">
-              Ring oss
-            </Button>
           </div>
           
           {/* Mobile menu button */}
@@ -89,11 +91,20 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <div className="border-t border-gray-100 pt-3">
-                <div className="px-3 py-2 text-sm text-gray-600">
-                  <Phone className="text-brand-pink mr-2 inline" size={16} />
-                  22 46 80 86
-                </div>
+              <div className="border-t border-gray-100 pt-3 space-y-2">
+                <Link href="/bestill-time">
+                  <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 w-full mb-2">
+                    Bestill time
+                  </Button>
+                </Link>
+                <Button 
+                  variant="outline" 
+                  className="border-brand-pink text-brand-pink hover:bg-brand-pink-light w-full"
+                  onClick={() => window.open('tel:22834173')}
+                >
+                  <Phone className="mr-2" size={16} />
+                  Ring oss
+                </Button>
               </div>
             </div>
           </div>

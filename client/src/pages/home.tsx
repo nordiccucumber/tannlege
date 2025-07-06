@@ -2,14 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Calendar, Phone, Activity, Settings, Gem, Shield, Star, User, Check } from "lucide-react";
-import dentalOfficeImage from "@assets/image_1751814835537.png";
-import doctorImage from "@assets/image_1751823084330.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-pink-light to-brand-green-light">
+      <section className="relative bg-gradient-to-br from-brand-pink-light via-[#C3E26E]/30 to-brand-green-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -26,7 +24,11 @@ export default function Home() {
                     Bestill time
                   </Button>
                 </Link>
-                <Button variant="outline" className="border-brand-pink text-brand-pink hover:bg-brand-pink-light text-lg px-8 py-4">
+                <Button 
+                  variant="outline" 
+                  className="border-brand-pink text-brand-pink hover:bg-brand-pink-light text-lg px-8 py-4"
+                  onClick={() => window.open('tel:22834173')}
+                >
                   <Phone className="mr-2" size={20} />
                   Ring oss
                 </Button>
@@ -34,24 +36,17 @@ export default function Home() {
             </div>
             <div className="relative">
               <img 
-                src={dentalOfficeImage} 
+                src="/attached_assets/image_1751824287638.png" 
                 alt="Moderne tannlegepraksis med lyse og innbydende lokaler" 
                 className="rounded-2xl shadow-2xl w-full" 
               />
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-xl">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-brand-green rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">Åpent i dag</span>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">08:30 - 15:00</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Overview */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-[#C3E26E]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Våre tjenester</h2>
@@ -59,40 +54,40 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200">
+            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
-                  <Activity className="text-brand-pink" size={32} />
+                <div className="w-16 h-16 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mb-4">
+                  <Activity className="text-[#6B8E23]" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Generell tannpleie</h3>
                 <p className="text-gray-600">Undersøkelse, rens og forebyggende behandling</p>
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200">
+            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-brand-green-light rounded-full flex items-center justify-center mb-4">
-                  <Settings className="text-brand-green" size={32} />
+                <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
+                  <Settings className="text-brand-pink" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Implantatbehandling</h3>
                 <p className="text-gray-600">Spesialkompetanse i implantatprotetikk</p>
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200">
+            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
-                  <Gem className="text-brand-pink" size={32} />
+                <div className="w-16 h-16 bg-[#C3E26E]/40 rounded-full flex items-center justify-center mb-4">
+                  <Gem className="text-[#6B8E23]" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Kosmetisk tannpleie</h3>
                 <p className="text-gray-600">Tannbleking og estetiske behandlinger</p>
               </CardContent>
             </Card>
             
-            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200">
+            <Card className="border border-gray-100 hover:shadow-md transition-shadow duration-200 bg-white">
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-brand-green-light rounded-full flex items-center justify-center mb-4">
-                  <Shield className="text-brand-green" size={32} />
+                <div className="w-16 h-16 bg-brand-pink-light rounded-full flex items-center justify-center mb-4">
+                  <Shield className="text-brand-pink" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Akuttbehandling</h3>
                 <p className="text-gray-600">Rask hjelp ved tannverk og skader</p>
@@ -203,19 +198,19 @@ export default function Home() {
                 Hun har spesialkompetanse i implantatprotetikk og kan utføre implantat-behandling 
                 med trygderefusjon i samarbeid med oralkirurg.
               </p>
-              <div className="bg-brand-green-light rounded-xl p-6">
+              <div className="bg-[#C3E26E]/30 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Spesialområder</h4>
                 <ul className="space-y-2">
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Implantatprotetikk
                   </li>
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Generell tannpleie
                   </li>
                   <li className="flex items-center text-gray-600">
-                    <Check className="text-brand-green mr-3" size={16} />
+                    <Check className="text-[#6B8E23] mr-3" size={16} />
                     Kosmetisk tannpleie
                   </li>
                 </ul>
@@ -223,7 +218,7 @@ export default function Home() {
             </div>
             <div>
               <img 
-                src={doctorImage} 
+                src="/attached_assets/image_1751814806978.png" 
                 alt="Dr. Mai Solgunn Glasø Slåttebrekk, erfaren tannlege" 
                 className="rounded-2xl shadow-lg w-full" 
               />

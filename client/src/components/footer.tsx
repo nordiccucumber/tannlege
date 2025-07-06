@@ -13,7 +13,7 @@ export default function Footer() {
               Vi tilbyr trygg og moderne tannpleie for hele familien.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="https://www.facebook.com/TannlegeSlattebrekk" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <Facebook size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
@@ -61,15 +61,15 @@ export default function Footer() {
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center">
                 <MapPin className="mr-2" size={16} />
-                Majorstuveien 36, 0367 Oslo
+                Stortingsgata 30, 0161 Oslo
               </p>
               <p className="flex items-center">
                 <Phone className="mr-2" size={16} />
-                22 46 80 86
+                22 83 41 73
               </p>
               <p className="flex items-center">
                 <Mail className="mr-2" size={16} />
-                post@tannlegeslaattebrekk.no
+                tannlegeslattebrekk@gmail.com
               </p>
             </div>
           </div>

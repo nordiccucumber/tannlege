@@ -41,9 +41,12 @@ export const insertAppointmentSchema = createInsertSchema(appointments).omit({
   createdAt: true,
 });
 
-export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({
-  id: true,
-  createdAt: true,
+export const insertContactMessageSchema = z.object({
+  firstName: z.string().min(1, "Navn er påkrevd"),
+  lastName: z.string().optional(),
+  email: z.string().email("Ugyldig e-postadresse"),
+  phone: z.string().optional(),
+  message: z.string().min(1, "Melding er påkrevd"),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

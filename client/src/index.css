@@ -23,12 +23,13 @@
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
-  
+
   /* Brand colors */
   --brand-pink: hsl(328, 82%, 65%);
-  --brand-green: hsl(82, 55%, 70%);
   --brand-pink-light: hsl(328, 82%, 97%);
+  --brand-green: hsl(82, 55%, 70%);
   --brand-green-light: hsl(82, 55%, 95%);
+  --brand-light-green: #C3E26E;
 }
 
 .dark {
@@ -69,47 +70,47 @@
   .brand-pink {
     color: var(--brand-pink);
   }
-  
+
   .brand-green {
     color: var(--brand-green);
   }
-  
+
   .bg-brand-pink {
     background-color: var(--brand-pink);
   }
-  
+
   .bg-brand-green {
     background-color: var(--brand-green);
   }
-  
+
   .bg-brand-pink-light {
     background-color: var(--brand-pink-light);
   }
-  
+
   .bg-brand-green-light {
     background-color: var(--brand-green-light);
   }
-  
+
   .border-brand-pink {
     border-color: var(--brand-pink);
   }
-  
+
   .border-brand-green {
     border-color: var(--brand-green);
   }
-  
+
   .text-brand-pink {
     color: var(--brand-pink);
   }
-  
+
   .text-brand-green {
     color: var(--brand-green);
   }
-  
+
   .hover\:bg-brand-pink:hover {
     background-color: hsl(328, 82%, 60%);
   }
-  
+
   .hover\:bg-brand-green:hover {
     background-color: hsl(82, 55%, 65%);
   }
