@@ -78,7 +78,7 @@ export default function Home() {
               </div>
               <div className="relative">
                 <img 
-                  src="/attached_assets/image_1751838036474.png" 
+                  src="/attached_assets/image_1751838218963.png" 
                   alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler" 
                   className="rounded-2xl shadow-lg w-full h-auto object-cover"
                 />
