@@ -13,9 +13,9 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/tjenester", label: "Tjenester" },
-    { href: "/om-oss", label: "Om oss" },
+    { href: "/#om-oss", label: "Om oss" },
     { href: "/pasientinformasjon", label: "Pasientinfo" },
-    { href: "/kontakt", label: "Kontakt" },
+    { href: "/#kontakt", label: "Kontakt" },
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/">
+              <Link href="/#hero">
                 <h1 className="text-xl font-bold text-brand-pink cursor-pointer">
                   Tannlege Slåttebrekk
                 </h1>
@@ -46,7 +46,7 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="flex items-center space-x-3 ml-8">
-              <Link href="/bestill-time">
+              <Link href="/#kontakt">
                 <Button className="bg-brand-pink text-white hover:bg-brand-pink/90">
                   Bestill time
                 </Button>
@@ -94,7 +94,7 @@ export default function Navigation() {
                 </Link>
               ))}
               <div className="border-t border-gray-100 pt-3 space-y-2">
-                <Link href="/bestill-time">
+                <Link href="/#kontakt">
                   <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 w-full mb-2">
                     Bestill time
                   </Button>

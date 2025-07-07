@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
+      <section id="hero" className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-4xl mx-auto text-center">
           <FadeInOutSection delay={0.1} translateY={10} threshold={0.1}>
             <h1 className="text-gray-700 text-sm sm:text-base md:text-lg font-medium mb-2 sm:mb-3 tracking-[0.2em] sm:tracking-[0.3em] uppercase">
@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* Om oss Section */}
-      <section className="py-16 bg-white">
+      <section id="om-oss" className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOutSection delay={0.2} translateY={30}>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
