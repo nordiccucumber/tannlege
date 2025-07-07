@@ -31,7 +31,7 @@ export default function Navigation() {
               </Link>
             </div>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
@@ -61,20 +61,22 @@ export default function Navigation() {
               </Button>
             </div>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-brand-pink"
+              className={`text-gray-700 hover:bg-transparent focus:outline-none focus:ring-0 focus:bg-transparent ${
+                isMenuOpen ? "text-brand-pink" : ""
+              }`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">

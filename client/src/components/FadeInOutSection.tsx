@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -29,6 +28,11 @@ export const FadeInOutSection: React.FC<FadeInOutSectionProps> = ({
     hidden: {
       opacity: 0,
       y: translateY,
+      transition: {
+        duration,
+        delay,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
     },
     visible: {
       opacity: 1,
@@ -36,13 +40,14 @@ export const FadeInOutSection: React.FC<FadeInOutSectionProps> = ({
       transition: {
         duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1], // Professional easing curve
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };
 
   return (
     <motion.div
+      key={inView ? 'visible' : 'hidden'}
       ref={ref}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
