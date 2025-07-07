@@ -47,14 +47,14 @@ export default function Navigation() {
             ))}
             <div className="flex items-center space-x-3 ml-8">
               <Link href="/#kontakt">
-                <Button className="bg-brand-pink text-white hover:bg-brand-pink/90">
+                <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out">
                   Bestill time
                 </Button>
               </Link>
               <Button 
                 variant="outline" 
                 size="icon"
-                className="border-brand-pink text-brand-pink hover:bg-brand-pink-light"
+                className="border-brand-pink text-brand-pink hover:bg-brand-pink-light hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
                 onClick={() => window.open('tel:22834173')}
               >
                 <Phone size={18} />
@@ -95,13 +95,13 @@ export default function Navigation() {
               ))}
               <div className="border-t border-gray-100 pt-3 space-y-2">
                 <Link href="/#kontakt">
-                  <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 w-full mb-2">
+                  <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg w-full mb-2 transition-all duration-300 ease-in-out">
                     Bestill time
                   </Button>
                 </Link>
                 <Button 
                   variant="outline" 
-                  className="border-brand-pink text-brand-pink hover:bg-brand-pink-light w-full"
+                  className="border-brand-pink text-brand-pink hover:bg-brand-pink-light hover:scale-105 hover:shadow-lg w-full transition-all duration-300 ease-in-out"
                   onClick={() => window.open('tel:22834173')}
                 >
                   <Phone className="mr-2" size={16} />

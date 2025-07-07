@@ -38,15 +38,15 @@ export default function Home() {
 
           <FadeInOutSection delay={0.9} translateY={15} threshold={0.1}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-              <Link href="/bestill-time">
-                <Button className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-brand-pink text-white hover:bg-brand-pink/90 rounded-xl text-base sm:text-xl font-medium flex items-center justify-center">
+              <Link href="/#kontakt">
+                <Button className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out">
                   <Calendar className="mr-2" size={18} />
                   Bestill time
                 </Button>
               </Link>
               <Button
                 variant="outline"
-                className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 rounded-xl text-base sm:text-xl font-medium flex items-center justify-center"
+                className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out"
                 onClick={() => window.open("tel:22834173")}
               >
                 <Phone className="mr-2" size={18} />
@@ -145,7 +145,7 @@ export default function Home() {
               ** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg
             </div>
             <Link href="/behandlinger">
-              <Button className="px-8 py-4 bg-brand-pink text-white hover:bg-brand-pink/90 rounded-xl text-lg font-medium">
+              <Button className="px-8 py-4 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-lg font-medium transition-all duration-300 ease-in-out">
                 Se alle behandlinger og priser
               </Button>
             </Link>
@@ -221,7 +221,7 @@ export default function Home() {
             <div className="flex flex-col gap-6 items-center text-center">
               <Button
                 onClick={() => window.open("tel:22834173")}
-                className="bg-brand-pink text-white hover:bg-brand-pink/90 px-8 py-4 text-lg sm:text-xl rounded-xl font-medium flex items-center justify-center"
+                className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg px-8 py-4 text-lg sm:text-xl rounded-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out"
               >
                 <Phone className="mr-2" size={20} />
                 Ring oss
@@ -274,7 +274,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <Button
                   type="submit"
-                  className="bg-brand-pink text-white hover:bg-brand-pink/90 px-6 py-3 rounded-xl text-base font-medium"
+                  className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg px-6 py-3 rounded-xl text-base font-medium transition-all duration-300 ease-in-out"
                 >
                   Send melding
                 </Button>
