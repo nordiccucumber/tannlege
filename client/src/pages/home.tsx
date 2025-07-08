@@ -198,48 +198,52 @@ export default function Home() {
 
         {showAll && (
           <div className="mt-10">
-            <div className="bg-gray-50 py-8 px-6 rounded-xl">
-              <h2 className="text-2xl font-bold text-center mb-8">Generell info</h2>
-              <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-800 text-sm">
+            <div className="bg-gray-50 py-10 px-8 rounded-xl">
+              <h2 className="text-2xl font-bold text-center mb-10">Generell info</h2>
+              <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
 
-                <div>
-                  <h3 className="font-semibold mb-3">Før ditt besøk</h3>
-                  <ul className="list-disc list-inside space-y-2 leading-snug">
-                    <li>Møt opp 15 minutter før avtalt tid</li>
-                    <li>Ta med gyldig legitimasjon og helsekort</li>
-                    <li>Opplys om medisinbruk og allergier</li>
-                    <li>Spis lett måltid før behandling</li>
-                  </ul>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Før ditt besøk</h3>
+                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                      <li>Møt opp 15 minutter før avtalt tid</li>
+                      <li>Ta med gyldig legitimasjon og helsekort</li>
+                      <li>Opplys om medisinbruk og allergier</li>
+                      <li>Spis lett måltid før behandling</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Etter behandling</h3>
+                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                      <li>Følg instruksjonene fra tannlegen</li>
+                      <li>Unngå for varmt/kaldt de første timene</li>
+                      <li>Kontakt oss ved spørsmål</li>
+                      <li>Bestill kontrolltime som anbefalt</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="font-semibold mb-3">Etter behandling</h3>
-                  <ul className="list-disc list-inside space-y-2 leading-snug">
-                    <li>Følg instruksjonene fra tannlegen</li>
-                    <li>Unngå for varmt/kaldt de første timene</li>
-                    <li>Kontakt oss ved spørsmål</li>
-                    <li>Bestill kontrolltime som anbefalt</li>
-                  </ul>
-                </div>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Viktig å vite</h3>
+                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                      <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
+                      <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
+                      <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
+                    </ul>
+                  </div>
 
-                <div>
-                  <h3 className="font-semibold mb-3">Viktig å vite</h3>
-                  <ul className="list-disc list-inside space-y-2 leading-snug">
-                    <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
-                    <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
-                    <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-3">Praktisk informasjon</h3>
-                  <ul className="list-disc list-inside space-y-2 leading-snug">
-                    <li>Vi tar imot kontant, kort og Vipps</li>
-                    <li>Avtalegiro mulig ved større behandlinger</li>
-                    <li>Hjelp med forsikringskrav og dokumentasjon</li>
-                    <li>Gjennomsiktig prising uten skjulte kostnader</li>
-                    <li>Avbestilling senere enn 24t = 500 kr gebyr</li>
-                  </ul>
+                  <div>
+                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Praktisk informasjon</h3>
+                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                      <li>Vi tar imot kontant, kort og Vipps</li>
+                      <li>Avtalegiro mulig ved større behandlinger</li>
+                      <li>Hjelp med forsikringskrav og dokumentasjon</li>
+                      <li>Gjennomsiktig prising uten skjulte kostnader</li>
+                      <li>Avbestilling senere enn 24t = 500 kr gebyr</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

@@ -28,27 +28,22 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Hurtiglenker</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/tjenester" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Tjenester
-                </Link>
-              </li>
-              <li>
-                <Link href="/om-oss" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="/#om-oss" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Om oss
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/pasientinformasjon" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Pasientinfo
-                </Link>
+                <a href="/#behandlinger" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  Behandlinger og priser
+                </a>
               </li>
               <li>
-                <a href="#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="/#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Kontakt
                 </a>
               </li>
               <li>
-                <a href="#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="/#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Bestill time
                 </a>
               </li>
