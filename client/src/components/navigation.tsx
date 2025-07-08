@@ -13,8 +13,7 @@ export default function Navigation() {
 
   const navItems = [
     { section: "om-oss", label: "Om oss", isExternal: false },
-    { href: "/tjenester", label: "Tjenester", isExternal: true },
-    { href: "/pasientinformasjon", label: "Pasientinfo", isExternal: true },
+    { section: "behandlinger", label: "Behandlinger og priser", isExternal: false },
     { section: "kontakt", label: "Kontakt", isExternal: false },
   ];
 

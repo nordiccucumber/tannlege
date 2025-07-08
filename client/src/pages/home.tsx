@@ -115,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* Behandlinger Section */}
-      <section className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
+      <section id="behandlinger" className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-2">Behandlinger og priser</h2>
         <p className="text-center text-gray-600 mb-6">
           Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister.
