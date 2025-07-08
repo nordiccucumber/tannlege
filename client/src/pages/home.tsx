@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Calendar, Phone } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
 
 export default function Home() {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -70,11 +72,11 @@ export default function Home() {
             </div>
             <div className="text-center max-w-4xl mx-auto">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Moderne og lyse lokaler
+                Sentralt i Oslo
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Klinikken holder til i 8. etasje i Stortingsgata 30, med vakre lokaler
-                og utsikt over slottsparken i Oslo sentrum. Her møter du vårt erfarne team i trygge
+                Klinikken holder til i 8. etasje i Stortingsgata 30 ved Nationaltheatret, i lyse og innbydende lokaler
+                med utsikt over slottsparken. Her møter du vårt erfarne team i trygge
                 og komfortable omgivelser.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
@@ -113,43 +115,144 @@ export default function Home() {
       </section>
 
       {/* Behandlinger Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <FadeInOutSection delay={0.2} translateY={30}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Behandlinger og priser
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister. Her er noen eksempler – se hele listen under.
-            </p>
-            <div className="grid gap-4 text-left text-gray-700 mb-10">
+      <section className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-2">Behandlinger og priser</h2>
+        <p className="text-center text-gray-600 mb-6">
+          Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister.
+          Her er noen eksempler – klikk for å se hele prislisten og mer informasjon.
+        </p>
+
+        <div className="space-y-4 text-sm md:text-base">
+          <div className="flex justify-between border-b pb-2">
+            <span>Undersøkelse + puss og røntgen</span>
+            <span>fra 1390 kr</span>
+          </div>
+          <div className="flex justify-between border-b pb-2">
+            <span>Studentundersøkelse</span>
+            <span>fra 790 kr*</span>
+          </div>
+          <div className="flex justify-between border-b pb-2">
+            <span>Komposittfylling (1 flate)</span>
+            <span>fra 980 kr**</span>
+          </div>
+
+          {showAll && (
+            <>
               <div className="flex justify-between border-b pb-2">
-                <span>Undersøkelse + puss og røntgen</span>
-                <span className="font-medium">fra 1390 kr</span>
+                <span>Komposittfylling (2 flater)</span>
+                <span>1490–1890 kr**</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span>Studentundersøkelse</span>
-                <span className="font-medium">fra 790 kr*</span>
+                <span>Komposittfylling (3 flater)</span>
+                <span>1890–2190 kr**</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span>Komposittfylling (1 flate)</span>
-                <span className="font-medium">fra 980 kr**</span>
+                <span>Bedriftsundersøkelse</span>
+                <span>980 kr</span>
               </div>
               <div className="flex justify-between border-b pb-2">
-                <span>Hjemmebleking (2 kjever)</span>
-                <span className="font-medium">fra 4000 kr</span>
+                <span>Smitteforebyggende tiltak</span>
+                <span>100 kr</span>
               </div>
-            </div>
-            <div className="text-sm text-gray-500 mb-6">
-              * Gjelder fulltidsstudenter <br />
-              ** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg
-            </div>
-            <Link href="/behandlinger">
-              <Button className="px-8 py-4 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-lg font-medium transition-all duration-300 ease-in-out">
-                Se alle behandlinger og priser
-              </Button>
-            </Link>
-          </FadeInOutSection>
+              <div className="flex justify-between border-b pb-2">
+                <span>Lokalbedøvelse pr. område</span>
+                <span>230 kr</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Bleking (1 kjeve)</span>
+                <span>2500 kr</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Bleking (2 kjever)</span>
+                <span>4000 kr</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Refill bleking</span>
+                <span>250 kr</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Mk-krone</span>
+                <span>7500 kr**</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Helkeramisk krone</span>
+                <span>7900 kr**</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Ekstraksjon</span>
+                <span>980–1900 kr**</span>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <span>Rotfylling</span>
+                <span>Timepris 2990 kr</span>
+              </div>
+            </>
+          )}
+
+          <div className="text-sm text-center text-gray-500 mt-2">
+            <p>* Gjelder fulltidsstudenter</p>
+            <p>** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg</p>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          {showAll && (
+      <section className="bg-gray-50 py-16 px-4 md:px-12">
+        <h2 className="text-2xl font-bold text-center mb-10">Generell info</h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-gray-800 text-sm md:text-base">
+
+          <div>
+            <h3 className="font-semibold mb-3">Før ditt besøk</h3>
+            <ul className="list-disc list-inside space-y-2 leading-snug">
+              <li>Møt opp 15 minutter før avtalt tid</li>
+              <li>Ta med gyldig legitimasjon og helsekort</li>
+              <li>Opplys om medisinbruk og allergier</li>
+              <li>Spis lett måltid før behandling</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-3">Etter behandling</h3>
+            <ul className="list-disc list-inside space-y-2 leading-snug">
+              <li>Følg instruksjonene fra tannlegen</li>
+              <li>Unngå for varmt/kaldt de første timene</li>
+              <li>Kontakt oss ved spørsmål</li>
+              <li>Bestill kontrolltime som anbefalt</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-3">Viktig å vite</h3>
+            <ul className="list-disc list-inside space-y-2 leading-snug">
+              <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
+              <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
+              <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-3">Praktisk informasjon</h3>
+            <ul className="list-disc list-inside space-y-2 leading-snug">
+              <li>Vi tar imot kontant, kort og Vipps</li>
+              <li>Avtalegiro mulig ved større behandlinger</li>
+              <li>Hjelp med forsikringskrav og dokumentasjon</li>
+              <li>Gjennomsiktig prising uten skjulte kostnader</li>
+              <li>Avbestilling senere enn 24t = 500 kr gebyr</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+          )}
+
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="bg-brand-pink text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 ease-in-out hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg"
+            >
+              {showAll ? "Vis færre behandlinger" : "Se alle behandlinger og priser"}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -209,78 +312,170 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Kundeomtaler */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Fine ord fra våre pasienter</h2>
+            <p className="text-lg text-gray-600 mt-4">Vi setter stor pris på tilbakemeldinger – her er noen av dem</p>
+          </div>
 
-      {/* Kontakt Section */}
-      <section id="kontakt" className="py-16 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInOutSection delay={0.2} translateY={30}>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-8">
-              Kontakt oss
-            </h2>
-
-            <div className="flex flex-col gap-6 items-center text-center">
-              <Button
-                onClick={() => window.open("tel:22834173")}
-                className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg px-8 py-4 text-lg sm:text-xl rounded-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out"
-              >
-                <Phone className="mr-2" size={20} />
-                Ring oss
-              </Button>
-              <p className="text-lg text-gray-700">– eller send oss en melding nedenfor:</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Omtale 1 */}
+            <div className="bg-white p-6 rounded-2xl shadow-md">
+              <p className="text-gray-700 italic mb-4">"Utrolig hyggelig og profesjonell tannlege! Følte meg trygg hele veien."</p>
+              <p className="text-sm font-semibold text-gray-800">– Kari M.</p>
             </div>
 
-            <form
-              action="https://formsubmit.co/post@tannlegeslattebrekk.no"
-              method="POST"
-              className="mt-10 space-y-6"
-            >
-              <input type="hidden" name="_captcha" value="false" />
-              <div>
-                <label htmlFor="navn" className="block text-sm font-medium text-gray-700">
-                  Navn
-                </label>
-                <input
-                  type="text"
-                  id="navn"
-                  name="navn"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
-                />
+            {/* Omtale 2 */}
+            <div className="bg-white p-6 rounded-2xl shadow-md">
+              <p className="text-gray-700 italic mb-4">"Effektiv behandling og god forklaring. Anbefales på det varmeste!"</p>
+              <p className="text-sm font-semibold text-gray-800">– Jens L.</p>
+            </div>
+
+            {/* Omtale 3 */}
+            <div className="bg-white p-6 rounded-2xl shadow-md">
+              <p className="text-gray-700 italic mb-4">"Super service og flotte lokaler. Hele familien går hit."</p>
+              <p className="text-sm font-semibold text-gray-800">– Camilla H.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      {/* Kontakt Section */}
+      <section id="kontakt" className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Venstre kolonne – kontaktinfo + åpningstider + kart */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Kontaktinformasjon</h2>
+              <p className="text-lg text-gray-700 mb-6">
+                Har du spørsmål angående tannbehandling, ledige timer, bytte av timer eller noe helt annet, hører vi gjerne fra deg.
+              </p>
+
+              <div className="space-y-4 text-gray-700 text-base">
+                <div>
+                  <strong>Adresse:</strong><br />
+                  <a
+                    href="https://maps.google.com?q=Stortingsgata+30,+0161+Oslo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-pink hover:underline"
+                  >
+                    Stortingsgata 30, 0161 Oslo
+                  </a>
+                </div>
+
+                <div>
+                  <strong>Telefon:</strong><br />
+                  <a href="tel:22834173" className="text-brand-pink hover:underline">
+                    22 83 41 73
+                  </a>
+                </div>
+
+                <div>
+                  <strong>E-post:</strong><br />
+                  <a href="mailto:tannlegeslattebrekk@gmail.com" className="text-brand-pink hover:underline">
+                    tannlegeslattebrekk@gmail.com
+                  </a>
+                </div>
               </div>
-              <div>
-                <label htmlFor="epost" className="block text-sm font-medium text-gray-700">
-                  E-post
-                </label>
-                <input
-                  type="email"
-                  id="epost"
-                  name="epost"
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
-                />
+
+              <div className="mt-8 text-base text-gray-700">
+                <h3 className="text-lg font-semibold mb-2">Våre åpningstider</h3>
+                <ul className="space-y-1">
+                  <li><strong>Mandag:</strong> 10.00 – 17.00</li>
+                  <li><strong>Tirsdag:</strong> 09.00 – 15.00</li>
+                  <li><strong>Onsdag:</strong> 08.30 – 15.00</li>
+                  <li><strong>Torsdag:</strong> 08.30 – 15.00</li>
+                  <li><strong>Fredag:</strong> 09.00 – 15.00</li>
+                </ul>
               </div>
-              <div>
-                <label htmlFor="melding" className="block text-sm font-medium text-gray-700">
-                  Melding
-                </label>
-                <textarea
-                  id="melding"
-                  name="melding"
-                  rows={5}
-                  required
-                  className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
-                />
+
+              <div className="mt-8">
+                <iframe
+                  title="Google Maps"
+                  src="https://maps.google.com/maps?q=Stortingsgata+30,+0161+Oslo&output=embed"
+                  width="100%"
+                  height="240"
+                  className="rounded-xl border"
+                  loading="lazy"
+                ></iframe>
               </div>
-              <div className="flex justify-center">
-                <Button
-                  type="submit"
-                  className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg px-6 py-3 rounded-xl text-base font-medium transition-all duration-300 ease-in-out"
-                >
-                  Send melding
-                </Button>
-              </div>
-            </form>
-          </FadeInOutSection>
+            </div>
+
+            {/* Høyre kolonne – kontaktskjema */}
+            <div>
+              <Button
+                variant="outline"
+                onClick={() => window.open("tel:22834173")}
+                className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:text-black hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out mb-6"
+              >
+                <Phone className="mr-2" size={18} />
+                Ring oss
+              </Button>
+
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Send en melding</h2>
+              <p className="text-lg text-gray-700 mb-6">Vi ser frem til å høre fra deg!</p>
+
+              <form
+                action="https://formsubmit.co/tannlegeslattebrekk@gmail.com"
+                method="POST"
+                className="space-y-5"
+              >
+                <input type="hidden" name="_captcha" value="false" />
+
+                <div>
+                  <label htmlFor="navn" className="block text-sm font-medium text-gray-700">
+                    Navn
+                  </label>
+                  <input
+                    type="text"
+                    id="navn"
+                    name="navn"
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="epost" className="block text-sm font-medium text-gray-700">
+                    E-post
+                  </label>
+                  <input
+                    type="email"
+                    id="epost"
+                    name="epost"
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="melding" className="block text-sm font-medium text-gray-700">
+                    Melding
+                  </label>
+                  <textarea
+                    id="melding"
+                    name="melding"
+                    rows={5}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-xl shadow-sm focus:ring-brand-pink focus:border-brand-pink px-4 py-3"
+                  />
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium transition-all duration-300 ease-in-out"
+                  >
+                    Send melding
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>

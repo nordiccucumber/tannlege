@@ -13,12 +13,17 @@ export default function Footer() {
               Vi tilbyr trygg og moderne tannpleie for hele familien.
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/TannlegeSlattebrekk" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a
+                href="https://www.facebook.com/TannlegeSlattebrekk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+              >
                 <Facebook size={20} />
               </a>
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-lg font-semibold mb-4">Hurtiglenker</h4>
             <ul className="space-y-2">
@@ -38,37 +43,48 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Kontakt
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/bestill-time" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <a href="#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Bestill time
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="text-lg font-semibold mb-4">Kontakt</h4>
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center">
                 <MapPin className="mr-2" size={16} />
-                Stortingsgata 30, 0161 Oslo
+                <a
+                  href="https://maps.google.com?q=Stortingsgata+30,+0161+Oslo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Stortingsgata 30, 0161 Oslo
+                </a>
               </p>
               <p className="flex items-center">
                 <Phone className="mr-2" size={16} />
-                22 83 41 73
+                <a href="tel:22834173" className="hover:underline">
+                  22 83 41 73
+                </a>
               </p>
               <p className="flex items-center">
                 <Mail className="mr-2" size={16} />
-                tannlegeslattebrekk@gmail.com
+                <a href="mailto:tannlegeslattebrekk@gmail.com" className="hover:underline">
+                  tannlegeslattebrekk@gmail.com
+                </a>
               </p>
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; 2024 Tannlege Slåttebrekk. Alle rettigheter reservert.</p>
         </div>

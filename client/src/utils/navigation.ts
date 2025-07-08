@@ -1,26 +1,34 @@
 import { useLocation } from "wouter";
 
-export const navigateToSection = (sectionId: string, setLocation: (path: string) => void) => {
+export const navigateToSection = (
+  sectionId: string,
+  setLocation: (path: string) => void
+) => {
   const scrollToSection = () => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 65;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
-  // If we're already on the home page, just scroll
-  if (window.location.pathname === '/') {
+  if (window.location.pathname === "/") {
     scrollToSection();
   } else {
-    // Navigate to home page first, then scroll after a short delay
-    setLocation('/');
+    setLocation("/");
     setTimeout(scrollToSection, 100);
   }
 };
 
 export const useNavigateToSection = () => {
   const [, setLocation] = useLocation();
-  
+
   return (sectionId: string) => {
     navigateToSection(sectionId, setLocation);
   };
