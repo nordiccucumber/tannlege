@@ -11,10 +11,17 @@ export default function Navigation() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const navItems = [
-    { href: "/#om-oss", label: "Om oss" },
-    { href: "/#behandlinger", label: "Behandlinger og priser" },
-    { href: "/#kontakt", label: "Kontakt" },
+    { id: "om-oss", label: "Om oss" },
+    { id: "behandlinger", label: "Behandlinger og priser" },
+    { id: "kontakt", label: "Kontakt" },
   ];
 
   return (
@@ -23,33 +30,32 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/#hero">
+              <button onClick={() => scrollToSection('hero')}>
                 <h1 className="text-xl font-bold text-brand-pink cursor-pointer">
                   Tannlege Slåttebrekk
                 </h1>
-              </Link>
+              </button>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-gray-700 hover:text-brand-pink transition-colors duration-200 font-medium ${
-                  location === item.href ? "text-brand-pink" : ""
-                }`}
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-gray-700 hover:text-brand-pink transition-colors duration-200 font-medium"
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
             <div className="flex items-center space-x-3 ml-8">
-              <Link href="/#kontakt">
-                <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out">
-                  Bestill time
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => scrollToSection('kontakt')}
+                className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
+              >
+                Bestill time
+              </Button>
               <Button 
                 variant="outline" 
                 size="icon"
@@ -81,23 +87,27 @@ export default function Navigation() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`block px-3 py-2 text-gray-700 hover:text-brand-pink ${
-                    location === item.href ? "text-brand-pink" : ""
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className="block px-3 py-2 text-gray-700 hover:text-brand-pink w-full text-left"
                 >
                   {item.label}
-                </Link>
+                </button>
               ))}
               <div className="border-t border-gray-100 pt-3 space-y-2">
-                <Link href="/#kontakt">
-                  <Button className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg w-full mb-2 transition-all duration-300 ease-in-out">
-                    Bestill time
-                  </Button>
-                </Link>
+                <Button 
+                  onClick={() => {
+                    scrollToSection('kontakt');
+                    setIsMenuOpen(false);
+                  }}
+                  className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg w-full mb-2 transition-all duration-300 ease-in-out"
+                >
+                  Bestill time
+                </Button>
                 <Button 
                   variant="outline" 
                   className="border-brand-pink text-brand-pink hover:bg-brand-pink-light hover:scale-105 hover:shadow-lg w-full transition-all duration-300 ease-in-out"

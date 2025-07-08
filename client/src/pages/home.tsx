@@ -41,12 +41,18 @@ export default function Home() {
 
           <FadeInOutSection delay={0.9} translateY={15} threshold={0.1}>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-              <Link href="/#kontakt">
-                <Button className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out">
-                  <Calendar className="mr-2" size={18} />
-                  Bestill time
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => {
+                  const element = document.getElementById('kontakt');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out"
+              >
+                <Calendar className="mr-2" size={18} />
+                Bestill time
+              </Button>
               <Button
                 variant="outline"
                 className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out"
