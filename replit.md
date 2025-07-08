@@ -108,6 +108,7 @@ Located in `shared/schema.ts`:
 
 ```
 Changelog:
+- July 08, 2025. Removed "Tjenester" and "Pasientinfo" tabs and pages. Reorganized navigation to "Om oss", "Behandlinger og priser", "Kontakt". Fixed "Generell info" styling in behandlinger section.
 - July 07, 2025. Reverted navigation changes back to original Link-based structure
 - July 06, 2025. Initial setup
 ```

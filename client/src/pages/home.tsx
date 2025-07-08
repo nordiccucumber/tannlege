@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import { Calendar, Phone } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
@@ -115,7 +116,7 @@ export default function Home() {
       </section>
 
       {/* Behandlinger Section */}
-      <section className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
+      <section id="behandlinger" className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-2">Behandlinger og priser</h2>
         <p className="text-center text-gray-600 mb-6">
           Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister.
@@ -195,64 +196,63 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-10">
-          {showAll && (
-      <section className="bg-gray-50 py-16 px-4 md:px-12">
-        <h2 className="text-2xl font-bold text-center mb-10">Generell info</h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-gray-800 text-sm md:text-base">
+        {showAll && (
+          <div className="mt-10">
+            <div className="bg-gray-50 py-8 px-6 rounded-xl">
+              <h2 className="text-2xl font-bold text-center mb-8">Generell info</h2>
+              <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-gray-800 text-sm">
 
-          <div>
-            <h3 className="font-semibold mb-3">Før ditt besøk</h3>
-            <ul className="list-disc list-inside space-y-2 leading-snug">
-              <li>Møt opp 15 minutter før avtalt tid</li>
-              <li>Ta med gyldig legitimasjon og helsekort</li>
-              <li>Opplys om medisinbruk og allergier</li>
-              <li>Spis lett måltid før behandling</li>
-            </ul>
+                <div>
+                  <h3 className="font-semibold mb-3">Før ditt besøk</h3>
+                  <ul className="list-disc list-inside space-y-2 leading-snug">
+                    <li>Møt opp 15 minutter før avtalt tid</li>
+                    <li>Ta med gyldig legitimasjon og helsekort</li>
+                    <li>Opplys om medisinbruk og allergier</li>
+                    <li>Spis lett måltid før behandling</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold mb-3">Etter behandling</h3>
+                  <ul className="list-disc list-inside space-y-2 leading-snug">
+                    <li>Følg instruksjonene fra tannlegen</li>
+                    <li>Unngå for varmt/kaldt de første timene</li>
+                    <li>Kontakt oss ved spørsmål</li>
+                    <li>Bestill kontrolltime som anbefalt</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold mb-3">Viktig å vite</h3>
+                  <ul className="list-disc list-inside space-y-2 leading-snug">
+                    <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
+                    <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
+                    <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-semibold mb-3">Praktisk informasjon</h3>
+                  <ul className="list-disc list-inside space-y-2 leading-snug">
+                    <li>Vi tar imot kontant, kort og Vipps</li>
+                    <li>Avtalegiro mulig ved større behandlinger</li>
+                    <li>Hjelp med forsikringskrav og dokumentasjon</li>
+                    <li>Gjennomsiktig prising uten skjulte kostnader</li>
+                    <li>Avbestilling senere enn 24t = 500 kr gebyr</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
+        )}
 
-          <div>
-            <h3 className="font-semibold mb-3">Etter behandling</h3>
-            <ul className="list-disc list-inside space-y-2 leading-snug">
-              <li>Følg instruksjonene fra tannlegen</li>
-              <li>Unngå for varmt/kaldt de første timene</li>
-              <li>Kontakt oss ved spørsmål</li>
-              <li>Bestill kontrolltime som anbefalt</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-3">Viktig å vite</h3>
-            <ul className="list-disc list-inside space-y-2 leading-snug">
-              <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
-              <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
-              <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-3">Praktisk informasjon</h3>
-            <ul className="list-disc list-inside space-y-2 leading-snug">
-              <li>Vi tar imot kontant, kort og Vipps</li>
-              <li>Avtalegiro mulig ved større behandlinger</li>
-              <li>Hjelp med forsikringskrav og dokumentasjon</li>
-              <li>Gjennomsiktig prising uten skjulte kostnader</li>
-              <li>Avbestilling senere enn 24t = 500 kr gebyr</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-          )}
-
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="bg-brand-pink text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 ease-in-out hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg"
-            >
-              {showAll ? "Vis færre behandlinger" : "Se alle behandlinger og priser"}
-            </button>
-          </div>
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="bg-brand-pink text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 ease-in-out hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg"
+          >
+            {showAll ? "Vis færre behandlinger" : "Se alle behandlinger og priser"}
+          </button>
         </div>
       </section>
 

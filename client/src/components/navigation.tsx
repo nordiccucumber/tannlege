@@ -12,9 +12,8 @@ export default function Navigation() {
   };
 
   const navItems = [
-    { href: "/tjenester", label: "Tjenester" },
     { href: "/#om-oss", label: "Om oss" },
-    { href: "/pasientinformasjon", label: "Pasientinfo" },
+    { href: "/#behandlinger", label: "Behandlinger og priser" },
     { href: "/#kontakt", label: "Kontakt" },
   ];
 

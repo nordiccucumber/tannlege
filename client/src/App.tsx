@@ -7,9 +7,7 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import Home from "@/pages/home";
 import About from "@/pages/about";
-import Services from "@/pages/services";
 import Appointment from "@/pages/appointment";
-import PatientInfo from "@/pages/patient-info";
 import Contact from "@/pages/contact";
 import Tips from "@/pages/tips";
 import NotFound from "@/pages/not-found";
@@ -19,9 +17,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/om-oss" component={About} />
-      <Route path="/tjenester" component={Services} />
       <Route path="/bestill-time" component={Appointment} />
-      <Route path="/pasientinformasjon" component={PatientInfo} />
       <Route path="/kontakt" component={Contact} />
       <Route path="/tips" component={Tips} />
       <Route component={NotFound} />
