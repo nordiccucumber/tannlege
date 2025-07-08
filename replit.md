@@ -108,6 +108,7 @@ Located in `shared/schema.ts`:
 
 ```
 Changelog:
+- July 07, 2025. Reverted navigation changes back to original Link-based structure
 - July 06, 2025. Initial setup
 ```
 
