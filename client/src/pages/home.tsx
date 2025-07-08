@@ -205,7 +205,7 @@ export default function Home() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold mb-4 text-lg text-brand-pink">Før ditt besøk</h3>
-                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                      <ul className="list-disc list-outside pl-4 space-y-2 leading-snug">
                       <li>Møt opp 15 minutter før avtalt tid</li>
                       <li>Ta med gyldig legitimasjon og helsekort</li>
                       <li>Opplys om medisinbruk og allergier</li>
@@ -215,7 +215,7 @@ export default function Home() {
 
                   <div>
                     <h3 className="font-semibold mb-4 text-lg text-brand-pink">Etter behandling</h3>
-                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                    <ul className="list-disc list-outside pl-4 space-y-2 leading-snug">
                       <li>Følg instruksjonene fra tannlegen</li>
                       <li>Unngå for varmt/kaldt de første timene</li>
                       <li>Kontakt oss ved spørsmål</li>
@@ -226,8 +226,8 @@ export default function Home() {
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Viktig å vite</h3>
-                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                    <h3 className="font-semibold mb-4 text-lg text-brand-pink">Fint å vite</h3>
+                    <ul className="list-disc list-outside pl-4 space-y-2 leading-snug">
                       <li>Vi har god erfaring med pasienter som har tannlegeskrekk</li>
                       <li>Vi hjelper deg å finne ut om du har rett til trygderefusjon</li>
                       <li>Bedrifter kan få egne avtaler – ta kontakt for mer info</li>
@@ -236,7 +236,7 @@ export default function Home() {
 
                   <div>
                     <h3 className="font-semibold mb-4 text-lg text-brand-pink">Praktisk informasjon</h3>
-                    <ul className="list-disc list-inside space-y-2 leading-relaxed">
+                    <ul className="list-disc list-outside pl-4 space-y-2 leading-snug">
                       <li>Vi tar imot kontant, kort og Vipps</li>
                       <li>Avtalegiro mulig ved større behandlinger</li>
                       <li>Hjelp med forsikringskrav og dokumentasjon</li>
