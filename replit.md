@@ -104,10 +104,26 @@ Located in `shared/schema.ts`:
 - **Development**: Vite dev server with HMR, in-memory storage
 - **Production**: Express serves static files, database persistence
 
+## Deployment
+
+### Current Build Setup
+- **Frontend Build**: Vite builds React app to `dist/public`
+- **Backend Build**: esbuild bundles server code to `dist/index.js`
+- **Issue**: Static deployment expects files in `dist` but they're in `dist/public`
+
+### Deployment Solutions
+1. **Recommended**: Use "Autoscale" deployment type (supports full-stack Express app)
+2. **Alternative**: Use `deploy-fix.js` script to move files from `dist/public` to `dist` for static deployment
+
+### Files Added
+- `deploy-fix.js` - Script to reorganize build files for static deployment
+- `DEPLOYMENT.md` - Deployment instructions and troubleshooting guide
+
 ## Changelog
 
 ```
 Changelog:
+- July 10, 2025. Added deployment fix for static deployment issues. Created deploy-fix.js script to move files from dist/public to dist. Added DEPLOYMENT.md with instructions.
 - July 08, 2025. Cleaned up unused pages and backend components. Removed all unused routes, API endpoints, database schemas, and client-side code. Website now only contains home.tsx with static content and simplified architecture.
 - July 08, 2025. Removed "Tjenester" and "Pasientinfo" tabs and pages. Reorganized navigation to "Om oss", "Behandlinger og priser", "Kontakt". Fixed "Generell info" styling in behandlinger section.
 - July 07, 2025. Reverted navigation changes back to original Link-based structure
