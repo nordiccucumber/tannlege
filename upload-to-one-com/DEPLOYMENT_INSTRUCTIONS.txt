@@ -1,0 +1,28 @@
+
+DEPLOYMENT INSTRUCTIONS FOR ONE.COM
+===================================
+
+1. Log in to your One.com control panel
+2. Go to File Manager or similar file management tool
+3. Navigate to your website's root directory (usually public_html or htdocs)
+4. Upload ALL files from this directory to your website's root directory
+5. Make sure index.html is in the root directory
+6. Upload the entire assets/ folder with all its contents
+
+File structure should look like:
+public_html/
+├── index.html
+├── assets/
+│   ├── index-[hash].css
+│   ├── index-[hash].js
+│   └── [other asset files]
+└── [other files if any]
+
+After upload:
+- Visit your website to verify it works
+- Check that Google Sheets data loads (may take a few seconds)
+- Test the contact form
+- Verify all links work correctly
+
+For Google Sheets setup, see: GOOGLE_SHEETS_GUIDE.md
+For troubleshooting, see: STATIC_EXPORT_GUIDE.md

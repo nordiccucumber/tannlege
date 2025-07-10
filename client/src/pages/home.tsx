@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Phone } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
+import { useBehandlinger, useApningstider, useKontaktInfo } from "@/hooks/useGoogleSheets";
 
 export default function Home() {
   const [showAll, setShowAll] = useState(false);
+  
+  // Google Sheets data hooks
+  const { behandlinger, loading: behandlingerLoading, error: behandlingerError } = useBehandlinger();
+  const { apningstider, loading: apningstiderLoading, error: apningstiderError } = useApningstider();
+  const { kontaktInfo, loading: kontaktLoading, error: kontaktError } = useKontaktInfo();
 
   return (
     <div className="bg-white">
@@ -136,78 +142,26 @@ export default function Home() {
           Her er noen eksempler – klikk for å se hele prislisten og mer informasjon.
         </p>
 
-        <div className="space-y-4 text-sm md:text-base">
-          <div className="flex justify-between border-b pb-2">
-            <span>Undersøkelse + puss og røntgen</span>
-            <span>fra 1390 kr</span>
+        {behandlingerLoading ? (
+          <div className="text-center py-8">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-pink"></div>
+            <p className="mt-2 text-gray-600">Henter behandlinger...</p>
           </div>
-          <div className="flex justify-between border-b pb-2">
-            <span>Studentundersøkelse</span>
-            <span>fra 790 kr*</span>
-          </div>
-          <div className="flex justify-between border-b pb-2">
-            <span>Komposittfylling (1 flate)</span>
-            <span>fra 980 kr**</span>
-          </div>
+        ) : (
+          <div className="space-y-4 text-sm md:text-base">
+            {behandlinger.slice(0, showAll ? behandlinger.length : 3).map((behandling, index) => (
+              <div key={index} className="flex justify-between border-b pb-2">
+                <span>{behandling.navn}</span>
+                <span>{behandling.pris}</span>
+              </div>
+            ))}
 
-          {showAll && (
-            <>
-              <div className="flex justify-between border-b pb-2">
-                <span>Komposittfylling (2 flater)</span>
-                <span>1490–1890 kr**</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Komposittfylling (3 flater)</span>
-                <span>1890–2190 kr**</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Bedriftsundersøkelse</span>
-                <span>980 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Smitteforebyggende tiltak</span>
-                <span>100 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Lokalbedøvelse pr. område</span>
-                <span>230 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Bleking (1 kjeve)</span>
-                <span>2500 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Bleking (2 kjever)</span>
-                <span>4000 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Refill bleking</span>
-                <span>250 kr</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Mk-krone</span>
-                <span>7500 kr**</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Helkeramisk krone</span>
-                <span>7900 kr**</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Ekstraksjon</span>
-                <span>980–1900 kr**</span>
-              </div>
-              <div className="flex justify-between border-b pb-2">
-                <span>Rotfylling</span>
-                <span>Timepris 2990 kr</span>
-              </div>
-            </>
-          )}
-
-          <div className="text-sm text-center text-gray-500 mt-2">
-            <p>* Gjelder fulltidsstudenter</p>
-            <p>** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg</p>
+            <div className="text-sm text-center text-gray-500 mt-2">
+              <p>* Gjelder fulltidsstudenter</p>
+              <p>** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg</p>
+            </div>
           </div>
-        </div>
+        )}
 
         {showAll && (
           <div className="mt-10">
@@ -263,14 +217,16 @@ export default function Home() {
           </div>
         )}
 
-        <div className="flex justify-center mt-10">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="bg-brand-pink text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 ease-in-out hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg"
-          >
-            {showAll ? "Vis færre behandlinger" : "Se alle behandlinger og priser"}
-          </button>
-        </div>
+        {!behandlingerLoading && behandlinger.length > 3 && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="bg-brand-pink text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 ease-in-out hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg"
+            >
+              {showAll ? "Vis færre behandlinger" : "Se alle behandlinger og priser"}
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Om oss Section */}
@@ -372,48 +328,62 @@ export default function Home() {
               </p>
 
               <div className="space-y-4 text-gray-700 text-base">
-                <div>
-                  <strong>Adresse:</strong><br />
-                  <a
-                    href="https://maps.google.com?q=Stortingsgata+30,+0161+Oslo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand-pink hover:underline"
-                  >
-                    Stortingsgata 30, 0161 Oslo
-                  </a>
-                </div>
+                {kontaktLoading ? (
+                  <div className="text-center py-4">
+                    <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-brand-pink"></div>
+                  </div>
+                ) : (
+                  <>
+                    <div>
+                      <strong>Adresse:</strong><br />
+                      <a
+                        href={`https://maps.google.com?q=${encodeURIComponent(kontaktInfo.adresse)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-pink hover:underline"
+                      >
+                        {kontaktInfo.adresse}
+                      </a>
+                    </div>
 
-                <div>
-                  <strong>Telefon:</strong><br />
-                  <a href="tel:22834173" className="text-brand-pink hover:underline">
-                    22 83 41 73
-                  </a>
-                </div>
+                    <div>
+                      <strong>Telefon:</strong><br />
+                      <a href={`tel:${kontaktInfo.telefon.replace(/\s/g, '')}`} className="text-brand-pink hover:underline">
+                        {kontaktInfo.telefon}
+                      </a>
+                    </div>
 
-                <div>
-                  <strong>E-post:</strong><br />
-                  <a href="mailto:tannlegeslattebrekk@gmail.com" className="text-brand-pink hover:underline">
-                    tannlegeslattebrekk@gmail.com
-                  </a>
-                </div>
+                    <div>
+                      <strong>E-post:</strong><br />
+                      <a href={`mailto:${kontaktInfo.epost}`} className="text-brand-pink hover:underline">
+                        {kontaktInfo.epost}
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
 
               <div className="mt-8 text-base text-gray-700">
                 <h3 className="text-lg font-semibold mb-2">Våre åpningstider</h3>
-                <ul className="space-y-1">
-                  <li><strong>Mandag:</strong> 10.00 – 17.00</li>
-                  <li><strong>Tirsdag:</strong> 09.00 – 15.00</li>
-                  <li><strong>Onsdag:</strong> 08.30 – 15.00</li>
-                  <li><strong>Torsdag:</strong> 08.30 – 15.00</li>
-                  <li><strong>Fredag:</strong> 09.00 – 15.00</li>
-                </ul>
+                {apningstiderLoading ? (
+                  <div className="text-center py-4">
+                    <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-brand-pink"></div>
+                  </div>
+                ) : (
+                  <ul className="space-y-1">
+                    {apningstider.map((tid, index) => (
+                      <li key={index}>
+                        <strong>{tid.dag}:</strong> {tid.stengt ? 'Stengt' : tid.tid}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               <div className="mt-8">
                 <iframe
                   title="Google Maps"
-                  src="https://maps.google.com/maps?q=Stortingsgata+30,+0161+Oslo&output=embed"
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(kontaktInfo.adresse)}&output=embed`}
                   width="100%"
                   height="240"
                   className="rounded-xl border"
@@ -426,7 +396,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
               <Button
                 variant="outline"
-                onClick={() => window.open("tel:22834173")}
+                onClick={() => window.open(`tel:${kontaktInfo.telefon.replace(/\s/g, '')}`)}
                 className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:text-black hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out mb-6"
               >
                 <Phone className="mr-2" size={18} />
@@ -437,7 +407,7 @@ export default function Home() {
               <p className="text-lg text-gray-700 mb-6">Vi ser frem til å høre fra deg!</p>
 
               <form
-                action="https://formsubmit.co/tannlegeslattebrekk@gmail.com"
+                action={`https://formsubmit.co/${kontaktInfo.epost}`}
                 method="POST"
                 className="space-y-5"
               >

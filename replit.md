@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a modern Norwegian dental practice website built with React/TypeScript frontend and Node.js/Express backend. The application serves as a professional website for Dr. Mai Solgunn Glasø Slåttebrekk's dental practice in Oslo, featuring appointment booking, contact forms, and informational content about dental services.
+This is a modern Norwegian dental practice website built with React/TypeScript frontend for static HTML export. The application serves as a professional website for Dr. Mai Solgunn Glasø Slåttebrekk's dental practice in Oslo, featuring Google Sheets integration for dynamic content management and contact forms. The website is designed to be deployed as static HTML to One.com or similar web hosting services.
 
 ## System Architecture
 
@@ -15,13 +15,12 @@ This is a modern Norwegian dental practice website built with React/TypeScript f
 - **Forms**: React Hook Form with Zod validation
 - **Build Tool**: Vite for development and production builds
 
-### Backend Architecture
-- **Runtime**: Node.js with Express.js
-- **Language**: TypeScript with ES modules
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon Database (@neondatabase/serverless)
-- **Session Management**: PostgreSQL session store (connect-pg-simple)
-- **API Design**: RESTful JSON API
+### Data Architecture
+- **Data Source**: Google Sheets CSV export
+- **Dynamic Content**: Behandlinger, åpningstider, kontaktinfo
+- **Content Management**: Google Sheets interface for easy updates
+- **Data Fetching**: Client-side hooks with fallback to static content
+- **No Backend**: Pure client-side static HTML application
 
 ### Development Setup
 - **Hot Reload**: Vite dev server with HMR
@@ -30,18 +29,19 @@ This is a modern Norwegian dental practice website built with React/TypeScript f
 
 ## Key Components
 
-### Database Schema
-Located in `shared/schema.ts`:
-- **users**: Basic user management (id, username, password)
-- **appointments**: Appointment booking system with patient details and preferences
-- **contactMessages**: Contact form submissions
-- **Validation**: Zod schemas for type-safe data validation
+### Google Sheets Integration
+Located in `client/src/config/googleSheets.ts` and `client/src/hooks/useGoogleSheets.ts`:
+- **useBehandlinger**: Fetches treatment data from Google Sheets
+- **useApningstider**: Fetches opening hours from Google Sheets
+- **useKontaktInfo**: Fetches contact information from Google Sheets
+- **Fallback Data**: Static fallback data when Google Sheets is unavailable
+- **CSV Parsing**: Client-side CSV parsing for Google Sheets data
 
-### API Endpoints
-- `POST /api/appointments` - Create new appointment booking
-- `GET /api/appointments` - Retrieve appointments (admin)
-- `POST /api/contact` - Submit contact form
-- `GET /api/contact` - Retrieve contact messages (admin)
+### Content Management
+- **Google Sheets**: Primary content management system
+- **No Database**: All dynamic content sourced from Google Sheets
+- **Easy Updates**: Content can be updated directly in Google Sheets
+- **Real-time Updates**: Changes reflect on website without redeployment
 
 ### Pages Structure
 - **Home** (`/`) - Hero section with practice overview
@@ -52,20 +52,22 @@ Located in `shared/schema.ts`:
 - **Contact** (`/kontakt`) - Contact form and practice information
 - **Tips** (`/tips`) - Dental health blog/tips section
 
-### Storage Implementation
-- **Interface**: `IStorage` abstraction for data operations
-- **Current**: `MemStorage` in-memory implementation for development
-- **Production**: Designed to be replaced with Drizzle ORM database implementation
+### Static HTML Export
+- **Build Process**: Vite builds to `dist/public` for static hosting
+- **Deployment Target**: One.com web hosting service
+- **Google Sheets**: Dynamic content without backend server
+- **Contact Form**: FormSubmit.co for contact form handling
+- **No Server**: Pure client-side application
 
 ## Data Flow
 
 1. **User Interaction**: Users interact with React components
-2. **Form Submission**: React Hook Form validates with Zod schemas
-3. **API Request**: TanStack Query sends HTTP requests to Express endpoints
-4. **Data Validation**: Server validates input using shared Zod schemas
-5. **Storage**: Data persisted through storage interface
-6. **Response**: JSON responses sent back to frontend
-7. **UI Update**: React components update based on response
+2. **Google Sheets Request**: Client-side hooks fetch data from Google Sheets CSV export
+3. **Data Parsing**: CSV data parsed and converted to typed objects
+4. **UI Update**: React components update with Google Sheets data
+5. **Fallback**: Static fallback data displayed if Google Sheets unavailable
+6. **Contact Form**: FormSubmit.co handles form submissions directly
+7. **No Backend**: All processing happens in the browser
 
 ## External Dependencies
 
@@ -123,6 +125,11 @@ Located in `shared/schema.ts`:
    - Removes empty `dist/public` directory
 
 ### Files Added
+- `client/src/config/googleSheets.ts` - Google Sheets configuration and utilities
+- `client/src/hooks/useGoogleSheets.ts` - React hooks for Google Sheets data
+- `static-build.js` - Build script for static HTML export
+- `GOOGLE_SHEETS_GUIDE.md` - Complete guide for Google Sheets setup
+- `STATIC_EXPORT_GUIDE.md` - Guide for static HTML deployment to One.com
 - `deploy-fix.js` - Script to reorganize build files for static deployment
 - `DEPLOYMENT.md` - Deployment instructions and troubleshooting guide
 
@@ -130,6 +137,7 @@ Located in `shared/schema.ts`:
 
 ```
 Changelog:
+- July 10, 2025. Konvertert til statisk HTML-export med Google Sheets-integrasjon. Lagt til Google Sheets hooks for behandlinger, åpningstider og kontaktinfo. Opprettet static-build.js script og komplett dokumentasjon for deployment til One.com.
 - July 10, 2025. Added deployment fix for static deployment issues. Created deploy-fix.js script to move files from dist/public to dist. Added DEPLOYMENT.md with instructions.
 - July 08, 2025. Cleaned up unused pages and backend components. Removed all unused routes, API endpoints, database schemas, and client-side code. Website now only contains home.tsx with static content and simplified architecture.
 - July 08, 2025. Removed "Tjenester" and "Pasientinfo" tabs and pages. Reorganized navigation to "Om oss", "Behandlinger og priser", "Kontakt". Fixed "Generell info" styling in behandlinger section.
