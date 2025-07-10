@@ -12,7 +12,9 @@ export const useBehandlinger = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.BEHANDLINGER_SHEET_ID, "0");
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          redirect: 'follow'
+        });
         
         if (!response.ok) {
           throw new Error('Failed to fetch data');
@@ -62,7 +64,9 @@ export const useApningstider = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "77335414");
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          redirect: 'follow'
+        });
         
         if (!response.ok) {
           throw new Error('Failed to fetch data');
@@ -117,7 +121,9 @@ export const useKontaktInfo = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1346966102");
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          redirect: 'follow'
+        });
         
         if (!response.ok) {
           throw new Error('Failed to fetch data');
