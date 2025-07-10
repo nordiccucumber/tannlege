@@ -113,7 +113,14 @@ Located in `shared/schema.ts`:
 
 ### Deployment Solutions
 1. **Recommended**: Use "Autoscale" deployment type (supports full-stack Express app)
+   - Change deployment type from "Static" to "Autoscale" in Replit settings
+   - No additional configuration needed
+   - Properly handles Express server and frontend serving
+
 2. **Alternative**: Use `deploy-fix.js` script to move files from `dist/public` to `dist` for static deployment
+   - Run: `npm run build && node deploy-fix.js`
+   - Script moves files from `dist/public` to `dist` directory
+   - Removes empty `dist/public` directory
 
 ### Files Added
 - `deploy-fix.js` - Script to reorganize build files for static deployment
