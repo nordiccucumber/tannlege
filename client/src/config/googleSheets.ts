@@ -3,19 +3,19 @@
 
 export const GOOGLE_SHEETS_CONFIG = {
   // Eksempel Google Sheets ID - erstatt med ditt eget
-  BEHANDLINGER_SHEET_ID: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
-  APNINGSTIDER_SHEET_ID: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms", 
-  KONTAKTINFO_SHEET_ID: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
+  BEHANDLINGER_SHEET_ID: "1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s",
+  APNINGSTIDER_SHEET_ID: "1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s", 
+  KONTAKTINFO_SHEET_ID: "1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s",
 };
 
 // Google Sheets API URLs for CSV export
 export const getGoogleSheetsCSVUrl = (sheetId: string, gid: string = "0") => {
-  return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
+  return `https://docs.google.com/spreadsheets/d/${1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s}/export?format=csv&gid=${gid}`;
 };
 
 // Google Sheets API URLs for JSON export (requires public sharing)
 export const getGoogleSheetsJSONUrl = (sheetId: string, range: string = "A1:Z1000") => {
-  return `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=AIzaSyBHNaKvwvFDqfwJxw7QGKIBaG3mKNa3_6c`;
+  return `https://sheets.googleapis.com/v4/spreadsheets/${1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s}/values/${range}?key=AIzaSyBHNaKvwvFDqfwJxw7QGKIBaG3mKNa3_6c`;
 };
 
 // Utility function to parse CSV data

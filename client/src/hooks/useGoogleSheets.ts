@@ -11,7 +11,7 @@ export const useBehandlinger = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.BEHANDLINGER_SHEET_ID);
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.BEHANDLINGER_SHEET_ID, "0");
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -61,7 +61,7 @@ export const useApningstider = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "1");
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "77335414");
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -116,7 +116,7 @@ export const useKontaktInfo = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "2");
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1346966102");
         const response = await fetch(url);
         
         if (!response.ok) {
