@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "wouter";
 import { Calendar, Phone } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
 
@@ -82,7 +80,16 @@ export default function Home() {
                 Sentralt i Oslo
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Klinikken holder til i 8. etasje i Stortingsgata 30 ved Nationaltheatret, i lyse og innbydende lokaler
+                Klinikken holder til i 8. etasje i{' '}
+                <a
+                  href="https://maps.google.com?q=Stortingsgata+30,+0161+Oslo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors"
+                >
+                  Stortingsgata 30
+                </a>{' '}
+                ved Nationaltheatret, i lyse og innbydende lokaler
                 med utsikt over slottsparken. Her møter du vårt erfarne team i trygge
                 og komfortable omgivelser.
               </p>
@@ -122,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* Behandlinger Section */}
-      <section id="behandlinger" className="py-16 px-4 md:px-12 max-w-4xl mx-auto">
+      <section id="behandlinger" className="scroll-mt-12 py-16 px-4 md:px-12 max-w-4xl mx-auto bg-gray-50">
         <h2 className="text-3xl font-bold text-center mb-2">Behandlinger og priser</h2>
         <p className="text-center text-gray-600 mb-6">
           Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister.
@@ -267,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* Om oss Section */}
-      <section id="om-oss" className="py-16 bg-white">
+      <section id="om-oss" className="scroll-mt-12 py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInOutSection delay={0.2} translateY={30}>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12">
@@ -354,7 +361,7 @@ export default function Home() {
 
       
       {/* Kontakt Section */}
-      <section id="kontakt" className="py-20 bg-gray-50">
+      <section id="kontakt" className="scroll-mt-12 py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Venstre kolonne – kontaktinfo + åpningstider + kart */}
@@ -415,8 +422,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Høyre kolonne – kontaktskjema */}
-            <div>
+            {/* Høyre kolonne – kontaktskjema i fremhevet boks */}
+            <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
               <Button
                 variant="outline"
                 onClick={() => window.open("tel:22834173")}

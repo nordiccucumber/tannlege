@@ -1,7 +1,13 @@
-import { Link } from "wouter";
 import { Facebook, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,24 +34,36 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Hurtiglenker</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/#om-oss" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => scrollToSection("om-oss")}
+                  className="text-left text-gray-300 hover:text-white transition-colors duration-200"
+                >
                   Om oss
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#behandlinger" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => scrollToSection("behandlinger")}
+                  className="text-left text-gray-300 hover:text-white transition-colors duration-200"
+                >
                   Behandlinger og priser
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => scrollToSection("kontakt")}
+                  className="text-left text-gray-300 hover:text-white transition-colors duration-200"
+                >
                   Kontakt
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#kontakt" className="text-gray-300 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => scrollToSection("kontakt")}
+                  className="text-left text-gray-300 hover:text-white transition-colors duration-200"
+                >
                   Bestill time
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -81,7 +99,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Tannlege Slåttebrekk. Alle rettigheter reservert.</p>
+          <p>&copy; {new Date().getFullYear()} Tannlege Slåttebrekk. Alle rettigheter reservert.</p>
         </div>
       </div>
     </footer>

@@ -38,8 +38,8 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation (custom breakpoint) */}
+          <div className="hidden [@media(min-width:1100px)]:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -68,7 +68,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="[@media(min-width:1100px)]:hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -84,7 +84,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="[@media(min-width:1100px)]:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-100">
               {navItems.map((item) => (
                 <button
