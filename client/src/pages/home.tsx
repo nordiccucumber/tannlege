@@ -2,15 +2,52 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Phone } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
-import { useBehandlinger, useApningstider, useKontaktInfo } from "@/hooks/useGoogleSheets";
 
 export default function Home() {
   const [showAll, setShowAll] = useState(false);
   
-  // Google Sheets data hooks
-  const { behandlinger, loading: behandlingerLoading, error: behandlingerError } = useBehandlinger();
-  const { apningstider, loading: apningstiderLoading, error: apningstiderError } = useApningstider();
-  const { kontaktInfo, loading: kontaktLoading, error: kontaktError } = useKontaktInfo();
+  // Static data for now - Google Sheets integration will be set up later
+  const behandlinger = [
+    { navn: 'Undersøkelse + puss og røntgen', pris: 'fra 1390 kr' },
+    { navn: 'Studentundersøkelse', pris: 'fra 790 kr*' },
+    { navn: 'Komposittfylling (1 flate)', pris: 'fra 980 kr**' },
+    { navn: 'Komposittfylling (2 flater)', pris: 'fra 1180 kr**' },
+    { navn: 'Komposittfylling (3 flater)', pris: 'fra 1380 kr**' },
+    { navn: 'Kronehette (metall)', pris: 'fra 4490 kr' },
+    { navn: 'Kronehette (porselen)', pris: 'fra 5290 kr' },
+    { navn: 'Broleddet (metall)', pris: 'fra 4490 kr' },
+    { navn: 'Broleddet (porselen)', pris: 'fra 5290 kr' },
+    { navn: 'Delbro (3 ledd)', pris: 'fra 13470 kr' },
+    { navn: 'Helprotese', pris: 'fra 8990 kr' },
+    { navn: 'Delprotese', pris: 'fra 4990 kr' },
+    { navn: 'Implantat inkl. krone', pris: 'fra 16000 kr' },
+    { navn: 'Tannbleking (hjemme)', pris: 'fra 2990 kr' },
+    { navn: 'Tannbleking (klinikk)', pris: 'fra 3990 kr' },
+    { navn: 'Rotbehandling (fortann)', pris: 'fra 3490 kr' },
+    { navn: 'Rotbehandling (jeksel)', pris: 'fra 4490 kr' },
+    { navn: 'Rotbehandling (fortann revisjon)', pris: 'fra 4490 kr' },
+    { navn: 'Rotbehandling (jeksel revisjon)', pris: 'fra 5490 kr' },
+    { navn: 'Tanntrekking (enkel)', pris: 'fra 890 kr' },
+    { navn: 'Tanntrekking (vanskelig)', pris: 'fra 1490 kr' },
+    { navn: 'Visdomstanntrekking', pris: 'fra 1990 kr' },
+    { navn: 'Tannskade (akutt)', pris: 'fra 1490 kr' },
+    { navn: 'Bittskjenne (snorkeskjenne)', pris: 'fra 2990 kr' },
+    { navn: 'Bittskjenne (tannkjøtning)', pris: 'fra 3990 kr' }
+  ];
+
+  const apningstider = [
+    { dag: 'Mandag', tid: '10.00 – 17.00' },
+    { dag: 'Tirsdag', tid: '09.00 – 15.00' },
+    { dag: 'Onsdag', tid: '08.30 – 15.00' },
+    { dag: 'Torsdag', tid: '08.30 – 15.00' },
+    { dag: 'Fredag', tid: '09.00 – 15.00' },
+  ];
+
+  const kontaktInfo = {
+    adresse: 'Stortingsgata 30, 0161 Oslo',
+    telefon: '22 83 41 73',
+    epost: 'tannlegeslattebrekk@gmail.com'
+  };
 
   return (
     <div className="bg-white">
@@ -142,26 +179,19 @@ export default function Home() {
           Her er noen eksempler – klikk for å se hele prislisten og mer informasjon.
         </p>
 
-        {behandlingerLoading ? (
-          <div className="text-center py-8">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-brand-pink"></div>
-            <p className="mt-2 text-gray-600">Henter behandlinger...</p>
-          </div>
-        ) : (
-          <div className="space-y-4 text-sm md:text-base">
-            {behandlinger.slice(0, showAll ? behandlinger.length : 3).map((behandling, index) => (
-              <div key={index} className="flex justify-between border-b pb-2">
-                <span>{behandling.navn}</span>
-                <span>{behandling.pris}</span>
-              </div>
-            ))}
-
-            <div className="text-sm text-center text-gray-500 mt-2">
-              <p>* Gjelder fulltidsstudenter</p>
-              <p>** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg</p>
+        <div className="space-y-4 text-sm md:text-base">
+          {behandlinger.slice(0, showAll ? behandlinger.length : 3).map((behandling, index) => (
+            <div key={index} className="flex justify-between border-b pb-2">
+              <span>{behandling.navn}</span>
+              <span>{behandling.pris}</span>
             </div>
+          ))}
+
+          <div className="text-sm text-center text-gray-500 mt-2">
+            <p>* Gjelder fulltidsstudenter</p>
+            <p>** Pris avhenger av størrelse og område. Røntgen og bedøvelse kan komme i tillegg</p>
           </div>
-        )}
+        </div>
 
         {showAll && (
           <div className="mt-10">
@@ -217,7 +247,7 @@ export default function Home() {
           </div>
         )}
 
-        {!behandlingerLoading && behandlinger.length > 3 && (
+        {behandlinger.length > 3 && (
           <div className="flex justify-center mt-10">
             <button
               onClick={() => setShowAll(!showAll)}
@@ -328,56 +358,42 @@ export default function Home() {
               </p>
 
               <div className="space-y-4 text-gray-700 text-base">
-                {kontaktLoading ? (
-                  <div className="text-center py-4">
-                    <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-brand-pink"></div>
-                  </div>
-                ) : (
-                  <>
-                    <div>
-                      <strong>Adresse:</strong><br />
-                      <a
-                        href={`https://maps.google.com?q=${encodeURIComponent(kontaktInfo.adresse)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brand-pink hover:underline"
-                      >
-                        {kontaktInfo.adresse}
-                      </a>
-                    </div>
+                <div>
+                  <strong>Adresse:</strong><br />
+                  <a
+                    href={`https://maps.google.com?q=${encodeURIComponent(kontaktInfo.adresse)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-pink hover:underline"
+                  >
+                    {kontaktInfo.adresse}
+                  </a>
+                </div>
 
-                    <div>
-                      <strong>Telefon:</strong><br />
-                      <a href={`tel:${kontaktInfo.telefon.replace(/\s/g, '')}`} className="text-brand-pink hover:underline">
-                        {kontaktInfo.telefon}
-                      </a>
-                    </div>
+                <div>
+                  <strong>Telefon:</strong><br />
+                  <a href={`tel:${kontaktInfo.telefon.replace(/\s/g, '')}`} className="text-brand-pink hover:underline">
+                    {kontaktInfo.telefon}
+                  </a>
+                </div>
 
-                    <div>
-                      <strong>E-post:</strong><br />
-                      <a href={`mailto:${kontaktInfo.epost}`} className="text-brand-pink hover:underline">
-                        {kontaktInfo.epost}
-                      </a>
-                    </div>
-                  </>
-                )}
+                <div>
+                  <strong>E-post:</strong><br />
+                  <a href={`mailto:${kontaktInfo.epost}`} className="text-brand-pink hover:underline">
+                    {kontaktInfo.epost}
+                  </a>
+                </div>
               </div>
 
               <div className="mt-8 text-base text-gray-700">
                 <h3 className="text-lg font-semibold mb-2">Våre åpningstider</h3>
-                {apningstiderLoading ? (
-                  <div className="text-center py-4">
-                    <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-brand-pink"></div>
-                  </div>
-                ) : (
-                  <ul className="space-y-1">
-                    {apningstider.map((tid, index) => (
-                      <li key={index}>
-                        <strong>{tid.dag}:</strong> {tid.stengt ? 'Stengt' : tid.tid}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <ul className="space-y-1">
+                  {apningstider.map((tid, index) => (
+                    <li key={index}>
+                      <strong>{tid.dag}:</strong> {tid.stengt ? 'Stengt' : tid.tid}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="mt-8">
