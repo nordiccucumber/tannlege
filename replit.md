@@ -137,6 +137,7 @@ Located in `client/src/config/googleSheets.ts` and `client/src/hooks/useGoogleSh
 
 ```
 Changelog:
+- July 10, 2025. Fixed deployment issues by correcting syntax errors in Google Sheets configuration file and applying deploy-fix.js script. Files successfully moved from dist/public to dist for static deployment compatibility.
 - July 10, 2025. Konvertert til statisk HTML-export med Google Sheets-integrasjon. Lagt til Google Sheets hooks for behandlinger, åpningstider og kontaktinfo. Opprettet static-build.js script og komplett dokumentasjon for deployment til One.com.
 - July 10, 2025. Added deployment fix for static deployment issues. Created deploy-fix.js script to move files from dist/public to dist. Added DEPLOYMENT.md with instructions.
 - July 08, 2025. Cleaned up unused pages and backend components. Removed all unused routes, API endpoints, database schemas, and client-side code. Website now only contains home.tsx with static content and simplified architecture.
