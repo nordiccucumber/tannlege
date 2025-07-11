@@ -19,52 +19,41 @@ export const useBehandlinger = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.BEHANDLINGER_SHEET_ID, "0");
-        const response = await fetch(url, {
-          redirect: 'follow'
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        
+        const response = await fetch(url, { redirect: 'follow' });
+
+        if (!response.ok) throw new Error('Failed to fetch data');
+
         const csvText = await response.text();
         const rows = parseCSV(csvText);
-        
-        // Skip header row and convert to objects
+
         const data = rows.slice(1).map(row => ({
           navn: row[0] || '',
           pris: row[1] || '',
           beskrivelse: row[2] || '',
           kategori: row[3] || ''
         }));
-        
+
         setBehandlinger(data);
         setError(null);
       } catch (err) {
         console.error('Error fetching behandlinger:', err);
         setError('Kunne ikke hente behandlingsdata');
-        // Fallback til korrekte behandlinger og priser
         setBehandlinger([
           { navn: 'Undersøkelse + puss og røntgen', pris: 'fra 1390 kr' },
           { navn: 'Studentundersøkelse', pris: 'fra 790 kr*' },
           { navn: 'Komposittfylling (1 flate)', pris: 'fra 980 kr**' },
           { navn: 'Komposittfylling (2 flater)', pris: '1490–1890 kr**' },
-          { navn: 'Komposittfylling (3 flater)', pris: '1890–2390 kr**' },
-          { navn: 'Komposittfylling (4 flater)', pris: '2390–2890 kr**' },
-          { navn: 'Komposittfylling (5 flater)', pris: '2890–3390 kr**' },
-          { navn: 'Rotfylling', pris: '3990–4990 kr**' },
-          { navn: 'Krone', pris: '8990–14990 kr**' },
-          { navn: 'Implantat', pris: '19990–29990 kr**' },
-          { navn: 'Tannbleking', pris: '4990 kr' },
-          { navn: 'Tannrens', pris: '1290 kr' },
-          { navn: 'Tanntrekking', pris: '1490–2490 kr**' },
-          { navn: 'Visdomstanntrekking', pris: '2490–3990 kr**' },
-          { navn: 'Provisorisk tann', pris: '1490 kr' },
-          { navn: 'Bittskinne', pris: '3990 kr' },
-          { navn: 'Tannregulering - konsultasjon', pris: '990 kr' },
-          { navn: 'Tannregulering - behandling', pris: 'fra 39990 kr' },
-          { navn: 'Periodontal behandling', pris: '1990–3990 kr**' },
-          { navn: 'Kirurgisk tannfjerning', pris: '3990–5990 kr**' }
+          { navn: 'Komposittfylling (3 flater)', pris: '1890–2190 kr**' },
+          { navn: 'Bedriftsundersøkelse', pris: '980kr' },
+          { navn: 'Smitteforebyggende tiltak', pris: '100kr' },
+          { navn: 'Lokalbedøvelse pr. område', pris: '230kr' },
+          { navn: 'Bleking (1 kjeve)', pris: '2 500kr' },
+          { navn: 'Bleking (2 kjever)', pris: '4 000kr' },
+          { navn: 'Refill bleking', pris: '250kr' },
+          { navn: 'Mk-krone', pris: '7500 kr**' },
+          { navn: 'Helkeramisk krone', pris: '7900 kr**' },
+          { navn: 'Ekstraksjon', pris: '980–1900 kr**' },
+          { navn: 'Rotfylling', pris: 'Timepris 2990 kr' }
         ]);
       } finally {
         setLoading(false);
@@ -88,30 +77,24 @@ export const useApningstider = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "77335414");
-        const response = await fetch(url, {
-          redirect: 'follow'
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        
+        const response = await fetch(url, { redirect: 'follow' });
+
+        if (!response.ok) throw new Error('Failed to fetch data');
+
         const csvText = await response.text();
         const rows = parseCSV(csvText);
-        
-        // Skip header row and convert to objects
+
         const data = rows.slice(1).map(row => ({
           dag: row[0] || '',
           tid: row[1] || '',
           stengt: row[2]?.toLowerCase() === 'stengt'
         }));
-        
+
         setApningstider(data);
         setError(null);
       } catch (err) {
         console.error('Error fetching åpningstider:', err);
         setError('Kunne ikke hente åpningstider');
-        // Fallback til åpningstider
         setApningstider([
           { dag: 'Mandag', tid: '10.00 – 17.00' },
           { dag: 'Tirsdag', tid: '09.00 – 15.00' },
@@ -141,19 +124,14 @@ export const useKontaktInfo = () => {
       try {
         setLoading(true);
         const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1346966102");
-        const response = await fetch(url, {
-          redirect: 'follow'
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        
+        const response = await fetch(url, { redirect: 'follow' });
+
+        if (!response.ok) throw new Error('Failed to fetch data');
+
         const csvText = await response.text();
         const rows = parseCSV(csvText);
-        
-        // Skip header row and convert to object
-        const data = rows.slice(1)[0]; // Get first data row
+
+        const data = rows.slice(1)[0];
         if (data) {
           setKontaktInfo({
             adresse: data[0] || 'Stortingsgata 30, 0161 Oslo',
@@ -162,11 +140,11 @@ export const useKontaktInfo = () => {
             beskrivelse: data[3] || ''
           });
         }
+
         setError(null);
       } catch (err) {
         console.error('Error fetching kontaktinfo:', err);
         setError('Kunne ikke hente kontaktinfo');
-        // Fallback til kontaktinfo
         setKontaktInfo({
           adresse: 'Stortingsgata 30, 0161 Oslo',
           telefon: '22 83 41 73',
