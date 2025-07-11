@@ -337,7 +337,7 @@ export default function Home() {
                   <div className="text-center py-4">
                     <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-brand-pink"></div>
                   </div>
-                ) : (
+                ) : kontaktInfo ? (
                   <>
                     <div>
                       <strong>Adresse:</strong><br />
@@ -365,6 +365,34 @@ export default function Home() {
                       </a>
                     </div>
                   </>
+                ) : (
+                  <>
+                    <div>
+                      <strong>Adresse:</strong><br />
+                      <a
+                        href="https://maps.google.com?q=Stortingsgata%2030%2C%200161%20Oslo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-pink hover:underline"
+                      >
+                        Stortingsgata 30, 0161 Oslo
+                      </a>
+                    </div>
+
+                    <div>
+                      <strong>Telefon:</strong><br />
+                      <a href="tel:22834173" className="text-brand-pink hover:underline">
+                        22 83 41 73
+                      </a>
+                    </div>
+
+                    <div>
+                      <strong>E-post:</strong><br />
+                      <a href="mailto:tannlegeslattebrekk@gmail.com" className="text-brand-pink hover:underline">
+                        tannlegeslattebrekk@gmail.com
+                      </a>
+                    </div>
+                  </>
                 )}
               </div>
 
@@ -388,7 +416,7 @@ export default function Home() {
               <div className="mt-8">
                 <iframe
                   title="Google Maps"
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(kontaktInfo.adresse)}&output=embed`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(kontaktInfo?.adresse || 'Stortingsgata 30, 0161 Oslo')}&output=embed`}
                   width="100%"
                   height="240"
                   className="rounded-xl border"
@@ -401,7 +429,7 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
               <Button
                 variant="outline"
-                onClick={() => window.open(`tel:${kontaktInfo.telefon.replace(/\s/g, '')}`)}
+                onClick={() => window.open(`tel:${kontaktInfo?.telefon?.replace(/\s/g, '') || '22834173'}`)}
                 className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:text-black hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out mb-6"
               >
                 <Phone className="mr-2" size={18} />
@@ -412,7 +440,7 @@ export default function Home() {
               <p className="text-lg text-gray-700 mb-6">Vi ser frem til å høre fra deg!</p>
 
               <form
-                action={`https://formsubmit.co/${kontaktInfo.epost}`}
+                action={`https://formsubmit.co/${kontaktInfo?.epost || 'tannlegeslattebrekk@gmail.com'}`}
                 method="POST"
                 className="space-y-5"
               >

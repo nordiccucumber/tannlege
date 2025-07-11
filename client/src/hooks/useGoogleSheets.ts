@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import {
   GOOGLE_SHEETS_CONFIG,
-  getGoogleSheetsJSONUrl,
+  getGoogleSheetsCSVUrl,
+  parseCSV,
   BehandlingItem,
   ApningstiderItem,
   KontaktInfo
 } from '@/config/googleSheets';
 
-// Henter behandlinger fra "Behandlinger" (kolonner A og B)
+// Henter behandlinger fra Google Sheets
 export const useBehandlinger = () => {
   const [behandlinger, setBehandlinger] = useState<BehandlingItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -16,26 +17,55 @@ export const useBehandlinger = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = getGoogleSheetsJSONUrl(
-          GOOGLE_SHEETS_CONFIG.SHEET_ID,
-          GOOGLE_SHEETS_CONFIG.BEHANDLINGER_RANGE
-        );
-        const response = await fetch(url);
-        const json = await response.json();
-        const rows = json.values;
-
-        if (!rows || rows.length < 2) throw new Error('Ingen data funnet');
-
-        const data = rows.slice(1).map((row: string[]) => ({
+        setLoading(true);
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.BEHANDLINGER_SHEET_ID, "0");
+        const response = await fetch(url, {
+          redirect: 'follow'
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+        
+        // Skip header row and convert to objects
+        const data = rows.slice(1).map(row => ({
           navn: row[0] || '',
           pris: row[1] || '',
+          beskrivelse: row[2] || '',
+          kategori: row[3] || ''
         }));
-
+        
         setBehandlinger(data);
         setError(null);
       } catch (err) {
-        console.error("Feil ved henting av behandlinger:", err);
-        setError("Kunne ikke hente behandlingsdata");
+        console.error('Error fetching behandlinger:', err);
+        setError('Kunne ikke hente behandlingsdata');
+        // Fallback til korrekte behandlinger og priser
+        setBehandlinger([
+          { navn: 'Undersøkelse + puss og røntgen', pris: 'fra 1390 kr' },
+          { navn: 'Studentundersøkelse', pris: 'fra 790 kr*' },
+          { navn: 'Komposittfylling (1 flate)', pris: 'fra 980 kr**' },
+          { navn: 'Komposittfylling (2 flater)', pris: '1490–1890 kr**' },
+          { navn: 'Komposittfylling (3 flater)', pris: '1890–2390 kr**' },
+          { navn: 'Komposittfylling (4 flater)', pris: '2390–2890 kr**' },
+          { navn: 'Komposittfylling (5 flater)', pris: '2890–3390 kr**' },
+          { navn: 'Rotfylling', pris: '3990–4990 kr**' },
+          { navn: 'Krone', pris: '8990–14990 kr**' },
+          { navn: 'Implantat', pris: '19990–29990 kr**' },
+          { navn: 'Tannbleking', pris: '4990 kr' },
+          { navn: 'Tannrens', pris: '1290 kr' },
+          { navn: 'Tanntrekking', pris: '1490–2490 kr**' },
+          { navn: 'Visdomstanntrekking', pris: '2490–3990 kr**' },
+          { navn: 'Provisorisk tann', pris: '1490 kr' },
+          { navn: 'Bittskinne', pris: '3990 kr' },
+          { navn: 'Tannregulering - konsultasjon', pris: '990 kr' },
+          { navn: 'Tannregulering - behandling', pris: 'fra 39990 kr' },
+          { navn: 'Periodontal behandling', pris: '1990–3990 kr**' },
+          { navn: 'Kirurgisk tannfjerning', pris: '3990–5990 kr**' }
+        ]);
       } finally {
         setLoading(false);
       }
@@ -47,7 +77,7 @@ export const useBehandlinger = () => {
   return { behandlinger, loading, error };
 };
 
-// Henter åpningstider fra "Åpningstider" (kolonner A og B)
+// Henter åpningstider fra Google Sheets
 export const useApningstider = () => {
   const [apningstider, setApningstider] = useState<ApningstiderItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,26 +86,39 @@ export const useApningstider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = getGoogleSheetsJSONUrl(
-          GOOGLE_SHEETS_CONFIG.SHEET_ID,
-          GOOGLE_SHEETS_CONFIG.APNINGSTIDER_RANGE
-        );
-        const response = await fetch(url);
-        const json = await response.json();
-        const rows = json.values;
-
-        if (!rows || rows.length < 2) throw new Error('Ingen data funnet');
-
-        const data = rows.slice(1).map((row: string[]) => ({
+        setLoading(true);
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "77335414");
+        const response = await fetch(url, {
+          redirect: 'follow'
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+        
+        // Skip header row and convert to objects
+        const data = rows.slice(1).map(row => ({
           dag: row[0] || '',
           tid: row[1] || '',
+          stengt: row[2]?.toLowerCase() === 'stengt'
         }));
-
+        
         setApningstider(data);
         setError(null);
       } catch (err) {
-        console.error("Feil ved henting av åpningstider:", err);
-        setError("Kunne ikke hente åpningstider");
+        console.error('Error fetching åpningstider:', err);
+        setError('Kunne ikke hente åpningstider');
+        // Fallback til åpningstider
+        setApningstider([
+          { dag: 'Mandag', tid: '10.00 – 17.00' },
+          { dag: 'Tirsdag', tid: '09.00 – 15.00' },
+          { dag: 'Onsdag', tid: '08.30 – 15.00' },
+          { dag: 'Torsdag', tid: '08.30 – 15.00' },
+          { dag: 'Fredag', tid: '09.00 – 15.00' },
+        ]);
       } finally {
         setLoading(false);
       }
@@ -87,39 +130,48 @@ export const useApningstider = () => {
   return { apningstider, loading, error };
 };
 
-// Henter kontaktinfo fra "Kontaktinfo" (kolonner A, B og C)
+// Henter kontaktinfo fra Google Sheets
 export const useKontaktInfo = () => {
-  const [kontaktInfo, setKontaktInfo] = useState<KontaktInfo>({
-    adresse: '',
-    telefon: '',
-    epost: '',
-  });
+  const [kontaktInfo, setKontaktInfo] = useState<KontaktInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = getGoogleSheetsJSONUrl(
-          GOOGLE_SHEETS_CONFIG.SHEET_ID,
-          GOOGLE_SHEETS_CONFIG.KONTAKTINFO_RANGE
-        );
-        const response = await fetch(url);
-        const json = await response.json();
-        const rows = json.values;
-
-        if (!rows || rows.length < 2) throw new Error('Ingen data funnet');
-
-        const row = rows[1];
-        setKontaktInfo({
-          adresse: row[0] || '',
-          telefon: row[1] || '',
-          epost: row[2] || '',
+        setLoading(true);
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1346966102");
+        const response = await fetch(url, {
+          redirect: 'follow'
         });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+        
+        // Skip header row and convert to object
+        const data = rows.slice(1)[0]; // Get first data row
+        if (data) {
+          setKontaktInfo({
+            adresse: data[0] || 'Stortingsgata 30, 0161 Oslo',
+            telefon: data[1] || '22 83 41 73',
+            epost: data[2] || 'tannlegeslattebrekk@gmail.com',
+            beskrivelse: data[3] || ''
+          });
+        }
         setError(null);
       } catch (err) {
-        console.error("Feil ved henting av kontaktinfo:", err);
-        setError("Kunne ikke hente kontaktinfo");
+        console.error('Error fetching kontaktinfo:', err);
+        setError('Kunne ikke hente kontaktinfo');
+        // Fallback til kontaktinfo
+        setKontaktInfo({
+          adresse: 'Stortingsgata 30, 0161 Oslo',
+          telefon: '22 83 41 73',
+          epost: 'tannlegeslattebrekk@gmail.com'
+        });
       } finally {
         setLoading(false);
       }
