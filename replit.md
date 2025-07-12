@@ -137,6 +137,7 @@ Located in `client/src/config/googleSheets.ts` and `client/src/hooks/useGoogleSh
 
 ```
 Changelog:
+- July 12, 2025. Fixed Google Sheets integration issues - updated hooks to use CSV format with proper redirect handling and added null checks for all contact information. Built new deployment-ready version with deploy-fix.js script.
 - July 10, 2025. Fixed deployment issues by correcting syntax errors in Google Sheets configuration file and applying deploy-fix.js script. Files successfully moved from dist/public to dist for static deployment compatibility.
 - July 10, 2025. Konvertert til statisk HTML-export med Google Sheets-integrasjon. Lagt til Google Sheets hooks for behandlinger, åpningstider og kontaktinfo. Opprettet static-build.js script og komplett dokumentasjon for deployment til One.com.
 - July 10, 2025. Added deployment fix for static deployment issues. Created deploy-fix.js script to move files from dist/public to dist. Added DEPLOYMENT.md with instructions.
