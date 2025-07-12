@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import fetch from 'node-fetch';
 
 const app = express();
 app.use(express.json());
@@ -38,6 +39,33 @@ app.use((req, res, next) => {
 
 (async () => {
   const server = await registerRoutes(app);
+
+  // Google Sheets proxy endpoint
+  const SHEET_ID = '1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s';
+  const GIDS: Record<string, string> = {
+    behandlinger: '0',
+    apningstider: '77335414',
+    kontaktinfo: '1346966102',
+  };
+
+  app.get('/api/:type', async (req, res) => {
+    const type = req.params.type;
+    const gid = GIDS[type];
+
+    if (!gid) return res.status(404).send('Ugyldig type');
+
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
+
+    try {
+      const response = await fetch(url);
+      const csv = await response.text();
+      res.setHeader('Content-Type', 'text/csv');
+      res.send(csv);
+    } catch (err) {
+      console.error('Feil ved henting av Google Sheet:', err);
+      res.status(500).send('Kunne ikke hente data');
+    }
+  });
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
