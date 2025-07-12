@@ -8,9 +8,9 @@ export const GOOGLE_SHEETS_CONFIG = {
   KONTAKTINFO_SHEET_ID: "1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s",
 };
 
-// Returnerer lokal proxy-endepunkt i backend
-export const getGoogleSheetsCSVUrl = (sheetType: 'behandlinger' | 'apningstider' | 'kontaktinfo'): string => {
-  return `/api/${sheetType}`;
+// Google Sheets API URLs for CSV export
+export const getGoogleSheetsCSVUrl = (sheetId: string, gid: string = "0") => {
+  return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${gid}`;
 };
 
 // Utility function to parse CSV data
@@ -20,11 +20,11 @@ export const parseCSV = (csvText: string): string[][] => {
     const result = [];
     let current = '';
     let inQuotes = false;
-
+    
     for (let i = 0; i < line.length; i++) {
       const char = line[i];
-
-      if (char === '"' && (i === 0 || line[i - 1] === ',')) {
+      
+      if (char === '"' && (i === 0 || line[i-1] === ',')) {
         inQuotes = true;
       } else if (char === '"' && inQuotes) {
         inQuotes = false;
@@ -35,7 +35,7 @@ export const parseCSV = (csvText: string): string[][] => {
         current += char;
       }
     }
-
+    
     result.push(current.trim());
     return result;
   });

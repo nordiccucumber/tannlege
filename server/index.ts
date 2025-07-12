@@ -1,12 +1,11 @@
 import express, { type Request, Response, NextFunction } from "express";
+import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import fetch from "node-fetch";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Logging av /api-ruter
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -25,7 +24,11 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-      if (logLine.length > 80) logLine = logLine.slice(0, 79) + "…";
+
+      if (logLine.length > 80) {
+        logLine = logLine.slice(0, 79) + "…";
+      }
+
       log(logLine);
     }
   });
@@ -33,48 +36,31 @@ app.use((req, res, next) => {
   next();
 });
 
-// ✅ Google Sheets proxy-endepunkt (fungerer både lokalt og etter deploy)
-const SHEET_ID = "1B5CI89IJoBDmpP3mYI99ec-xDpPLd9DY4mOQJ95566s";
-const GIDS: Record<string, string> = {
-  behandlinger: "0",
-  apningstider: "77335414",
-  kontaktinfo: "1346966102",
-};
-
-app.get("/api/:type", async (req, res) => {
-  const type = req.params.type;
-  const gid = GIDS[type];
-
-  if (!gid) return res.status(404).send("Ugyldig type");
-
-  const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
-
-  try {
-    const response = await fetch(url);
-    const csv = await response.text();
-    res.setHeader("Content-Type", "text/csv");
-    res.send(csv);
-  } catch (err) {
-    console.error("Feil ved henting av Google Sheet:", err);
-    res.status(500).send("Kunne ikke hente data");
-  }
-});
-
-// Error handler
-app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-  const status = err.status || err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
-  res.status(status).json({ message });
-  throw err;
-});
-
-// Start server
 (async () => {
+  const server = await registerRoutes(app);
+
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
+
+    res.status(status).json({ message });
+    throw err;
+  });
+
+  // importantly only setup vite in development and after
+  // setting up all the other routes so the catch-all route
+  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
-    const server = await setupVite(app);
-    server.listen(5000, "0.0.0.0", () => log("serving on port 5000"));
+    await setupVite(app, server);
   } else {
     serveStatic(app);
-    app.listen(5000, "0.0.0.0", () => log("serving on port 5000"));
   }
+
+  // ALWAYS serve the app on port 5000
+  // this serves both the API and the client.
+  // It is the only port that is not firewalled.
+  const port = 5000;
+  server.listen(port, "0.0.0.0", () => {
+    log(`serving on port ${port}`);
+  });
 })();
