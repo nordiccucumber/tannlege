@@ -327,7 +327,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Venstre kolonne – kontaktinfo + åpningstider + kart */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Kontaktinformasjon</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Kontakt</h2>
               <p className="text-lg text-gray-700 mb-6">
                 Har du spørsmål angående tannbehandling, ledige timer, bytte av timer eller noe helt annet, hører vi gjerne fra deg.
               </p>
