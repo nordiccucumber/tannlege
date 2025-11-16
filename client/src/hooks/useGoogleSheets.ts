@@ -37,25 +37,27 @@ export const useBehandlinger = () => {
         setError(null);
       } catch (err) {
         console.error('Error fetching behandlinger:', err);
-        setError('Kunne ikke hente behandlingsdata');
+        // Viktig: ikke blokker visningen i UI – bruk fallback og nullstill error
         setBehandlinger([
           { navn: 'Undersøkelse + puss og røntgen', pris: 'fra 1390 kr' },
           { navn: 'Studentundersøkelse', pris: 'fra 790 kr*' },
           { navn: 'Komposittfylling (1 flate)', pris: 'fra 980 kr**' },
           { navn: 'Komposittfylling (2 flater)', pris: '1490–1890 kr**' },
           { navn: 'Komposittfylling (3 flater)', pris: '1890–2190 kr**' },
-          { navn: 'Bedriftsundersøkelse', pris: '980kr' },
-          { navn: 'Smitteforebyggende tiltak', pris: '100kr' },
-          { navn: 'Lokalbedøvelse pr. område', pris: '230kr' },
+          { navn: 'Bedriftsundersøkelse', pris: '980 kr' },
+          { navn: 'Smitteforebyggende tiltak', pris: '100 kr' },
+          { navn: 'Lokalbedøvelse pr. område', pris: '230 kr' },
           { navn: 'Bleking (1 kjeve)', pris: '2 500kr' },
           { navn: 'Bleking (2 kjever)', pris: '4 000kr' },
-          { navn: 'Refill bleking', pris: '250kr' },
+          { navn: 'Refill bleking', pris: '250 kr' },
           { navn: 'Mk-krone', pris: '7500 kr**' },
           { navn: 'Helkeramisk krone', pris: '7900 kr**' },
           { navn: 'Ekstraksjon', pris: '980–1900 kr**' },
           { navn: 'Rotfylling', pris: 'Timepris 2990 kr' }
         ]);
+        setError(null); // ← nøkkelen: sørger for at UI viser lista, ikke feilmelding
       } finally {
+
         setLoading(false);
       }
     };
@@ -76,7 +78,7 @@ export const useApningstider = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "77335414");
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.APNINGSTIDER_SHEET_ID, "1916901892");
         const response = await fetch(url, { redirect: 'follow' });
 
         if (!response.ok) throw new Error('Failed to fetch data');
@@ -123,7 +125,7 @@ export const useKontaktInfo = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1346966102");
+        const url = getGoogleSheetsCSVUrl(GOOGLE_SHEETS_CONFIG.KONTAKTINFO_SHEET_ID, "1824223222");
         const response = await fetch(url, { redirect: 'follow' });
 
         if (!response.ok) throw new Error('Failed to fetch data');
