@@ -71,9 +71,7 @@ export default function Home() {
                 Ring oss
               </Button>
             </div>
-
           </FadeInOutSection>
-
         </div>
       </section>
 
@@ -84,7 +82,7 @@ export default function Home() {
             <div className="mb-16">
               <img
                 src="/tannlegeslattebrekk-team.webp"
-                alt="Dr. Mai Solgunn Glasø Slåttebrekk og Malin Pousette i klinikkens moderne lokaler"
+                alt="Teambilde i klinikken"
                 className="rounded-2xl shadow-lg w-full h-auto object-cover"
               />
             </div>
@@ -141,7 +139,10 @@ export default function Home() {
       </section>
 
       {/* Behandlinger Section */}
-      <section id="behandlinger" className="scroll-mt-[96px] py-16 px-4 md:px-12 max-w-4xl mx-auto bg-gray-50">
+      <section
+        id="behandlinger"
+        className="scroll-mt-[96px] py-16 px-4 md:px-12 max-w-4xl mx-auto bg-gray-50"
+      >
         <h2 className="text-3xl font-bold text-center mb-2">Behandlinger og priser</h2>
         <p className="text-center text-gray-600 mb-6">
           Vi tilbyr alle typer tannbehandling (unntatt kjeveortopedi), i samarbeid med spesialister.
@@ -243,11 +244,13 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-start">
               <div>
                 <img
-                  src="/maisolgunn-slattebrekk.webp"
+                  src="/maisolgunn.webp"
                   alt="Dr. Mai Solgunn Glasø Slåttebrekk"
                   className="rounded-2xl shadow-lg w-full h-auto object-cover mb-4"
                 />
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">Mai Solgunn Glasø Slåttebrekk</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                  Mai Solgunn Glasø Slåttebrekk
+                </h3>
                 <p className="text-sm font-medium text-gray-600 mb-4">Tannlege M.N.T.F.</p>
                 <p className="text-gray-600 leading-relaxed mb-2">
                   Mai Solgunn ble ferdigutdannet tannlege i 1993 etter studier ved Odontologisk fakultet i Oslo, og har drevet privat praksis siden. Med over 30 års erfaring tilbyr hun trygg og profesjonell tannpleie for alle.
@@ -268,8 +271,8 @@ export default function Home() {
 
               <div>
                 <img
-                  src="/malin-pousette.webp"
-                  alt="Malin Pousette"
+                  src="/tannlegeslattebrekk-ansatt.webp"
+                  alt="Tannhelsesekretær"
                   className="rounded-2xl shadow-lg w-full h-auto object-cover mb-4"
                 />
                 <h3 className="text-xl font-semibold text-gray-900 mb-1">Malin Pousette</h3>
@@ -297,7 +300,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Fine ord fra våre pasienter</h2>
-            <p className="text-lg text-gray-600 mt-4">Vi setter stor pris på tilbakemeldinger – her er noen av dem</p>
+            <p className="text-lg text-gray-600 mt-4">
+              Vi setter stor pris på tilbakemeldinger – her er noen av dem:
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -305,7 +310,13 @@ export default function Home() {
             <div className="bg-white p-6 rounded-2xl shadow-md">
               <div className="flex mb-3 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5">
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    className="w-5 h-5"
+                  >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
                   </svg>
                 ))}
@@ -321,7 +332,13 @@ export default function Home() {
             <div className="bg-white p-6 rounded-2xl shadow-md">
               <div className="flex mb-3 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5">
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    className="w-5 h-5"
+                  >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
                   </svg>
                 ))}
@@ -337,7 +354,13 @@ export default function Home() {
             <div className="bg-white p-6 rounded-2xl shadow-md">
               <div className="flex mb-3 text-yellow-400">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5">
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    className="w-5 h-5"
+                  >
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
                   </svg>
                 ))}
@@ -385,7 +408,10 @@ export default function Home() {
                     <div>
                       <strong>Telefon:</strong>
                       <br />
-                      <a href={`tel:${kontaktInfo.telefon.replace(/\s/g, "")}`} className="text-brand-pink hover:underline">
+                      <a
+                        href={`tel:${kontaktInfo.telefon.replace(/\s/g, "")}`}
+                        className="text-brand-pink hover:underline"
+                      >
                         {kontaktInfo.telefon}
                       </a>
                     </div>
@@ -393,7 +419,10 @@ export default function Home() {
                     <div>
                       <strong>E-post:</strong>
                       <br />
-                      <a href={`mailto:${kontaktInfo.epost}`} className="text-brand-pink hover:underline">
+                      <a
+                        href={`mailto:${kontaktInfo.epost}`}
+                        className="text-brand-pink hover:underline"
+                      >
                         {kontaktInfo.epost}
                       </a>
                     </div>
@@ -448,7 +477,6 @@ export default function Home() {
 
                       return (
                         <li key={index} className="flex items-baseline">
-                          {/* bredde justert for å matche “Mandag: 10.00 …” mest mulig */}
                           <span className="font-semibold inline-block w-[4.6rem]">
                             {tid.dag}:
                           </span>
@@ -468,7 +496,6 @@ export default function Home() {
                 )}
               </div>
 
-
               <div className="mt-8">
                 <iframe
                   title="Google Maps"
@@ -487,7 +514,11 @@ export default function Home() {
             <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
               <Button
                 variant="outline"
-                onClick={() => window.open(`tel:${kontaktInfo?.telefon?.replace(/\s/g, "") || "22834173"}`)}
+                onClick={() =>
+                  window.open(
+                    `tel:${kontaktInfo?.telefon?.replace(/\s/g, "") || "22834173"}`
+                  )
+                }
                 className="w-[240px] sm:w-auto px-6 sm:px-10 py-4 sm:py-5 border-2 border-brand-pink text-brand-pink hover:bg-brand-pink/5 hover:text-black hover:scale-105 hover:shadow-lg rounded-xl text-base sm:text-xl font-medium flex items-center justify-center transition-all duration-300 ease-in-out mb-6"
               >
                 <Phone className="mr-2" size={18} />
@@ -546,7 +577,6 @@ export default function Home() {
                   >
                     Send melding
                   </button>
-
                 </div>
               </form>
             </div>
