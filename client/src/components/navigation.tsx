@@ -1,22 +1,31 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 
+// Helper: scroll til seksjon med hensyn til sticky navbar (id="top-nav")
+const scrollWithOffset = (sectionId: string) => {
+  if (typeof document === "undefined") return;
+
+  const element = document.getElementById(sectionId);
+  if (!element) return;
+
+  const rect = element.getBoundingClientRect();
+  const scrollTop = window.scrollY || window.pageYOffset;
+
+  const navBar = document.getElementById("top-nav") as HTMLElement | null;
+  const navHeight = navBar?.offsetHeight ?? 80;
+
+  const offset = 8; // litt luft
+  const targetY = rect.top + scrollTop - navHeight - offset;
+
+  window.scrollTo({
+    top: targetY,
+    behavior: "smooth",
+  });
+};
+
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [location] = useLocation();
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const navItems = [
     { id: "om-oss", label: "Om oss" },
@@ -24,13 +33,29 @@ export default function Navigation() {
     { id: "kontakt", label: "Kontakt" },
   ];
 
+  // Desktop-klikk: direkte scroll
+  const handleDesktopClick = (id: string) => {
+    scrollWithOffset(id);
+  };
+
+  // Mobil-klikk: lukk menyen først, scroll rett etterpå
+  const handleMobileClick = (id: string) => {
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      scrollWithOffset(id);
+    }, 50);
+  };
+
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
+    <nav
+      id="top-nav"
+      className="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <button onClick={() => scrollToSection('hero')}>
+              <button onClick={() => handleDesktopClick("hero")}>
                 <h1 className="text-xl font-bold text-brand-pink cursor-pointer">
                   Tannlege Slåttebrekk
                 </h1>
@@ -43,24 +68,25 @@ export default function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleDesktopClick(item.id)}
                 className="text-gray-700 hover:text-brand-pink transition-colors duration-200 font-medium"
               >
                 {item.label}
               </button>
             ))}
+
             <div className="flex items-center space-x-3 ml-8">
-              <Button 
-                onClick={() => scrollToSection('kontakt')}
+              <Button
+                onClick={() => handleDesktopClick("kontakt")}
                 className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
               >
                 Bestill time
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="icon"
                 className="border-brand-pink text-brand-pink hover:bg-brand-pink-light hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
-                onClick={() => window.open('tel:22834173')}
+                onClick={() => window.open("tel:22834173")}
               >
                 <Phone size={18} />
               </Button>
@@ -72,7 +98,7 @@ export default function Navigation() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleMenu}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               className={`text-gray-700 hover:bg-transparent focus:outline-none focus:ring-0 focus:bg-transparent ${
                 isMenuOpen ? "text-brand-pink" : ""
               }`}
@@ -89,29 +115,24 @@ export default function Navigation() {
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => {
-                    scrollToSection(item.id);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => handleMobileClick(item.id)}
                   className="block px-3 py-2 text-gray-700 hover:text-brand-pink w-full text-left"
                 >
                   {item.label}
                 </button>
               ))}
+
               <div className="border-t border-gray-100 pt-3 space-y-2">
-                <Button 
-                  onClick={() => {
-                    scrollToSection('kontakt');
-                    setIsMenuOpen(false);
-                  }}
+                <Button
+                  onClick={() => handleMobileClick("kontakt")}
                   className="bg-brand-pink text-white hover:bg-brand-pink/90 hover:scale-105 hover:shadow-lg w-full mb-2 transition-all duration-300 ease-in-out"
                 >
                   Bestill time
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-brand-pink text-brand-pink hover:bg-brand-pink-light hover:scale-105 hover:shadow-lg w-full transition-all duration-300 ease-in-out"
-                  onClick={() => window.open('tel:22834173')}
+                  onClick={() => window.open("tel:22834173")}
                 >
                   <Phone className="mr-2" size={16} />
                   Ring oss

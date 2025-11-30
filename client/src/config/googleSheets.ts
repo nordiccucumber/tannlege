@@ -1,24 +1,24 @@
-// Google Sheets Configuration
-// For å oppdatere innhold, endre kun Google Sheets ID-ene her
+// src/config/googleSheets.ts
 
+// Google Sheets Configuration
+// For å oppdatere innhold, endre kun ID + GID-ene her
 export const GOOGLE_SHEETS_CONFIG = {
   // Hele oppsettet (alle faner) ligger i samme Google Sheet:
-  // Behandlinger, Åpningstider, Kontaktinfo, Ansatte
   SHEET_ID: "1G_ojqNMWd9pO1ixnu2eA-nq7cGBvYMUzX09uDtXsQLA",
 
-  // Egen GID per fane
+  // GID per fane (ark)
   BEHANDLINGER_GID: "0",
   APNINGSTIDER_GID: "1916901892",
   KONTAKTINFO_GID: "1824223222",
   ANSATTE_GID: "329801477",
 };
 
-// Google Sheets API URLs for CSV export
+// Google Sheets API URL for CSV-export
 export const getGoogleSheetsCSVUrl = (gid: string) => {
   return `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEETS_CONFIG.SHEET_ID}/export?format=csv&gid=${gid}`;
 };
 
-// Utility function to parse CSV data
+// Enkel CSV-parser (tåler komma i tekst med "...")
 export const parseCSV = (csvText: string): string[][] => {
   const lines = csvText.trim().split("\n");
   return lines.map((line) => {
@@ -46,7 +46,7 @@ export const parseCSV = (csvText: string): string[][] => {
   });
 };
 
-// Data types for forskjellige faner
+// Typer for de ulike fanene
 
 export interface BehandlingItem {
   navn: string;
@@ -68,8 +68,12 @@ export interface KontaktInfo {
   beskrivelse?: string;
 }
 
+// Matcher "Ansatte"-arket:
+// Navn | Rolle | Tekst 1 | Tekst 2 | Punkt 1 | Punkt 2 | ...
 export interface AnsattItem {
   navn: string;
-  stilling: string;
-  beskrivelse: string;
+  rolle: string;
+  tekst1: string;
+  tekst2: string;
+  punkter: string[]; // alle rosa punkter på raden
 }

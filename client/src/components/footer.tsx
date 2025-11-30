@@ -128,7 +128,13 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Tannlege Slåttebrekk. Alle rettigheter reservert.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Tannlege Slåttebrekk. Alle rettigheter
+            reservert.
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Design og utvikling: Fartein Orestad
+          </p>
         </div>
       </div>
     </footer>
