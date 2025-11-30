@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Phone } from "lucide-react";
+import { Calendar, Phone, Star } from "lucide-react";
 import { FadeInOutSection } from "@/components/FadeInOutSection";
 import {
   useBehandlinger,
@@ -403,17 +403,14 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Omtale 1 */}
             <div className="bg-white p-6 rounded-2xl shadow-md">
-              <div className="flex mb-3 text-yellow-400">
+              <div className="flex mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg
+                  <Star
                     key={i}
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5 text-yellow-400"
                     fill="currentColor"
-                    viewBox="0 0 20 20"
-                    className="w-5 h-5"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l-1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
-                  </svg>
+                    stroke="none"
+                  />
                 ))}
               </div>
               <p className="text-gray-700 italic mb-4">
@@ -426,17 +423,14 @@ export default function Home() {
 
             {/* Omtale 2 */}
             <div className="bg-white p-6 rounded-2xl shadow-md">
-              <div className="flex mb-3 text-yellow-400">
+              <div className="flex mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg
+                  <Star
                     key={i}
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5 text-yellow-400"
                     fill="currentColor"
-                    viewBox="0 0 20 20"
-                    className="w-5 h-5"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l-1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
-                  </svg>
+                    stroke="none"
+                  />
                 ))}
               </div>
               <p className="text-gray-700 italic mb-4">
@@ -448,21 +442,20 @@ export default function Home() {
 
             {/* Omtale 3 */}
             <div className="bg-white p-6 rounded-2xl shadow-md">
-              <div className="flex mb-3 text-yellow-400">
+              <div className="flex mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg
+                  <Star
                     key={i}
-                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-5 h-5 text-yellow-400"
                     fill="currentColor"
-                    viewBox="0 0 20 20"
-                    className="w-5 h-5"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.81l-3.385 2.46a1 1 0 00-.364 1.118l1.287 3.974c.3.922-.755 1.688-1.54 1.118l-3.385-2.46a1 1 0 00-1.176 0l-3.385 2.46c-.785.57-1.84-.196-1.54-1.118l-1.287-3.974a1 1 0 00-.364-1.118L2.048 9.401c-.783-.57-.38-1.81.588-1.81h4.178a1 1 0 00.95-.69l1.285-3.974z" />
-                  </svg>
+                    stroke="none"
+                  />
                 ))}
               </div>
               <p className="text-gray-700 italic mb-4">
-                "Jeg hadde angst for å gå til tannlegen i mange år, men hos Mai Solgunn ble jeg møtt av en ro og tålmodighet som gjorde at jeg klarte å fullføre behandlingen. Nå går jeg til tannlegen uten å grue meg!"
+                "Jeg hadde angst for å gå til tannlegen i mange år, men hos Mai Solgunn
+                ble jeg møtt av en ro og tålmodighet som gjorde at jeg klarte å
+                fullføre behandlingen. Nå går jeg til tannlegen uten å grue meg!"
               </p>
               <p className="text-sm font-semibold text-gray-800">– Marit</p>
             </div>
@@ -587,9 +580,9 @@ export default function Home() {
                             {tid.dag}:
                           </span>
                           {isClosed ? (
-                          <span className="text-brand-pink ml-[0.25rem]">
-                            Stengt
-                          </span>
+                            <span className="text-brand-pink ml-[0.25rem]">
+                              Stengt
+                            </span>
                           ) : (
                             <span className="tabular-nums ml-[0.25rem]">
                               {tekst || "-"}
@@ -602,27 +595,29 @@ export default function Home() {
                 )}
               </div>
 
-              {/* 🔹 Klikkbart kart som åpner Google Maps */}
-              <div className="mt-8 relative group">
-                <a
-                  href={`https://maps.google.com?q=${encodeURIComponent(
-                    kontaktInfo?.adresse || "Stortingsgata 30, 0161 Oslo"
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 z-10 cursor-pointer"
-                  aria-label="Åpne i Google Maps"
-                />
-                <iframe
-                  title="Google Maps"
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                    kontaktInfo?.adresse || "Stortingsgata 30, 0161 Oslo"
-                  )}&output=embed`}
-                  width="100%"
-                  height="240"
-                  className="rounded-xl border pointer-events-none"
-                  loading="lazy"
-                ></iframe>
+              <div className="mt-8">
+                <div
+                  className="rounded-xl border overflow-hidden cursor-pointer group"
+                  onClick={() =>
+                    window.open(
+                      `https://maps.google.com/maps?q=${encodeURIComponent(
+                        kontaktInfo?.adresse || "Stortingsgata 30, 0161 Oslo"
+                      )}`,
+                      "_blank"
+                    )
+                  }
+                >
+                  <iframe
+                    title="Google Maps"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                      kontaktInfo?.adresse || "Stortingsgata 30, 0161 Oslo"
+                    )}&output=embed`}
+                    width="100%"
+                    height="240"
+                    className="w-full h-[240px] pointer-events-none group-hover:brightness-105 transition"
+                    loading="lazy"
+                  ></iframe>
+                </div>
               </div>
             </div>
 
